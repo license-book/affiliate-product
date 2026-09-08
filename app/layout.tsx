@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FloatingQuickActions from "../components/FloatingQuickActions";
 import "./globals.css";
+import "./info-pages.css";
 
 export const metadata: Metadata = {
   title: "제휴상품 비교추천",
