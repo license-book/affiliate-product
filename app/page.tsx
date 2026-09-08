@@ -1,4 +1,5 @@
 import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
 
 const categories = [
   { icon: "💻", name: "노트북", desc: "업무·학업·휴대성" },
@@ -51,7 +52,7 @@ export default function Home() {
         <div className="steps"><div><b>01</b><strong>상품 검색</strong><p>원하는 상품이나 카테고리를 검색합니다.</p></div><div><b>02</b><strong>조건 비교</strong><p>가격과 핵심 조건을 한 화면에서 비교합니다.</p></div><div><b>03</b><strong>판매처 이동</strong><p>마음에 드는 상품의 판매처로 안전하게 이동합니다.</p></div></div>
       </section>
 
-      <footer><strong>PICKLY</strong><p>상품 선택을 더 쉽고 명확하게.</p><small>일부 링크를 통해 구매 시 수수료를 제공받을 수 있습니다.</small></footer>
+      <SiteFooter />
     </main>
   );
 }
