@@ -1,3 +1,5 @@
+import SiteHeader from "../components/SiteHeader";
+
 const categories = [
   { icon: "💻", name: "노트북", desc: "업무·학업·휴대성" },
   { icon: "📱", name: "스마트폰", desc: "성능·카메라·가격" },
@@ -16,13 +18,7 @@ const picks = [
 export default function Home() {
   return (
     <main>
-      <header className="header">
-        <a className="brand" href="#">PICKLY</a>
-        <nav className="nav" aria-label="주요 메뉴">
-          <a href="#categories">카테고리</a><a href="#recommend">추천</a><a href="#how">이용방법</a>
-        </nav>
-        <button className="menu" aria-label="메뉴">☰</button>
-      </header>
+      <SiteHeader />
 
       <section className="hero">
         <div className="heroInner">
