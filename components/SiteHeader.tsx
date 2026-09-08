@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import styles from "./SiteHeader.module.css";
 
 const nav = [
-  { label: "카테고리", href: "#categories", description: "상품군별 비교", items: [["노트북", "#categories"], ["스마트폰", "#categories"], ["TV·가전", "#categories"], ["디지털", "#categories"]] },
-  { label: "추천", href: "#recommend", description: "조건별 추천", items: [["업무용 추천", "#recommend"], ["가성비 추천", "#recommend"], ["인기상품", "#recommend"], ["선물추천", "#recommend"]] },
-  { label: "비교가이드", href: "#how", description: "비교 기준과 이용방법", items: [["상품 검색", "#how"], ["조건 비교", "#how"], ["판매처 확인", "#how"], ["제휴 안내", "#how"]] },
+  { label: "카테고리", href: "/#categories", description: "상품군별 비교", items: [["노트북", "/#categories"], ["스마트폰", "/#categories"], ["TV·가전", "/#categories"], ["디지털", "/#categories"]] },
+  { label: "추천", href: "/#recommend", description: "조건별 추천", items: [["업무용 추천", "/#recommend"], ["가성비 추천", "/#recommend"], ["인기상품", "/#recommend"], ["선물추천", "/#recommend"]] },
+  { label: "비교가이드", href: "/#how", description: "비교 기준과 이용방법", items: [["상품 검색", "/#how"], ["조건 비교", "/#how"], ["판매처 확인", "/#how"], ["제휴 안내", "/#how"]] },
 ] as const;
 
 function BrandIcon() {
@@ -16,7 +16,6 @@ function BrandIcon() {
 }
 
 export default function SiteHeader() {
-  const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -45,7 +44,7 @@ export default function SiteHeader() {
       <Link className={styles.brand} href="/" onClick={go}><BrandIcon/><span>PICKLY</span></Link>
       <nav className={styles.desktopNav} aria-label="주요 메뉴">
         {nav.map((item) => <div className={styles.navItem} key={item.label}>
-          <Link className={`${styles.navLink}${pathname !== "/" && pathname.startsWith(item.href) ? ` ${styles.active}` : ""}`} href={item.href}>{item.label}<span className={styles.chevron}/></Link>
+          <Link className={styles.navLink} href={item.href}>{item.label}<span className={styles.chevron}/></Link>
           <div className={styles.submenu}>
             <div className={styles.submenuHead}><strong>{item.label}</strong><span>{item.description}</span></div>
             <div className={styles.submenuGrid}>{item.items.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</div>
