@@ -7,12 +7,12 @@ export default function SiteFooter() {
         <div className="siteFooterGrid">
           <div>
             <Link href="/" className="siteFooterBrand">
-              <span className="siteFooterBrandKo">픽리</span>
-              <span className="siteFooterBrandEn">PICKLY</span>
+              <span className="siteFooterBrandKo">9HO</span>
+              <span className="siteFooterBrandEn">사기 전에, 9HO.</span>
             </Link>
 
             <p className="siteFooterIntro">
-              여러 쇼핑몰의 상품을 쉽고 빠르게 찾고, 비교하고, 선택할 수 있도록 정리하는
+              여러 쇼핑몰의 상품과 가격, 핵심 조건을 한눈에 비교해 더 나은 선택을 돕는
               상품 비교추천 서비스입니다.
             </p>
 
@@ -52,7 +52,7 @@ export default function SiteFooter() {
             구매 전에는 반드시 해당 판매처의 최신 상품 정보와 거래 조건을 확인해 주세요.
           </p>
           <div>
-            <span>© 2026 PICKLY. All rights reserved.</span>
+            <span>© 2026 9HO. All rights reserved.</span>
             <span>상품 비교추천 서비스 · 대한민국</span>
           </div>
         </div>
