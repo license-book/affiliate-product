@@ -41,7 +41,7 @@ export default function SiteHeader() {
 
   return <header className={`${styles.header} ${overlay ? styles.overlay : styles.solid}`} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
     <div className={styles.inner}>
-      <Link className={styles.brand} href="/" onClick={go}><BrandIcon/><span>9HO</span></Link>
+      <Link className={styles.brand} href="/" onClick={go}><BrandIcon/><span>9HO 구호</span></Link>
       <nav className={styles.desktopNav} aria-label="주요 메뉴">
         {nav.map((item) => <div className={styles.navItem} key={item.label}>
           <Link className={styles.navLink} href={item.href}>{item.label}<span className={styles.chevron}/></Link>
