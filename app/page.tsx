@@ -23,33 +23,33 @@ export default function Home() {
 
       <section className="hero">
         <div className="heroInner">
-          <p className="eyebrow">SMART PRODUCT COMPARISON</p>
-          <h1>여러 쇼핑몰 상품을<br/><span>한곳에서 비교하세요.</span></h1>
-          <p className="description">가격만 나열하지 않고 용도와 조건에 맞는 상품을 찾기 쉽게 정리합니다.</p>
+          <p className="eyebrow">9HO SMART SHOPPING</p>
+          <h1>사기 전에, 9HO.<br/><span>비교하면 더 좋은 선택이 보입니다.</span></h1>
+          <p className="description">여러 쇼핑몰의 가격과 핵심 조건을 한눈에 비교해, 더 잘 고를 수 있도록 정리합니다.</p>
           <form className="search" action="#recommend">
             <span aria-hidden="true">⌕</span>
-            <input aria-label="상품 검색" placeholder="어떤 상품을 찾고 계세요?" />
+            <input aria-label="상품 검색" placeholder="무엇을 비교해볼까요?" />
             <button type="submit">검색</button>
           </form>
-          <div className="quick"><b>인기 검색</b><a href="#recommend">노트북</a><a href="#recommend">무선이어폰</a><a href="#recommend">로봇청소기</a><a href="#recommend">모니터</a></div>
+          <div className="quick"><b>지금 많이 찾는 상품</b><a href="#recommend">노트북</a><a href="#recommend">무선이어폰</a><a href="#recommend">로봇청소기</a><a href="#recommend">모니터</a></div>
         </div>
       </section>
 
       <section className="section" id="categories">
-        <div className="sectionHead"><div><p className="sectionLabel">CATEGORY</p><h2>무엇을 비교할까요?</h2></div><p>필요한 상품군부터 빠르게 찾아보세요.</p></div>
+        <div className="sectionHead"><div><p className="sectionLabel">CATEGORY</p><h2>지금 필요한 상품부터 비교하세요</h2></div><p>상품군을 고르면 비교해야 할 기준부터 빠르게 확인할 수 있습니다.</p></div>
         <div className="categoryGrid">{categories.map((item) => <a className="categoryCard" href="#recommend" key={item.name}><span className="categoryIcon">{item.icon}</span><strong>{item.name}</strong><small>{item.desc}</small><i>→</i></a>)}</div>
       </section>
 
       <section className="recommend" id="recommend">
         <div className="section recommendInner">
-          <div className="sectionHead"><div><p className="sectionLabel">RECOMMEND</p><h2>조건에 맞는 상품을 쉽게</h2></div><p>상품 검색 API 연결 후 실제 가격과 판매처가 자동으로 표시됩니다.</p></div>
+          <div className="sectionHead"><div><p className="sectionLabel">9HO PICK</p><h2>잘 고르는 쇼핑, 9HO가 정리합니다</h2></div><p>가격과 용도, 핵심 조건을 함께 보고 나에게 맞는 상품을 찾아보세요.</p></div>
           <div className="pickGrid">{picks.map((item, i) => <article className="pickCard" key={item.title}><div className="productVisual"><span>0{i+1}</span></div><div className="pickBody"><div className="badge">{item.badge}</div><small>{item.category}</small><h3>{item.title}</h3><p>{item.meta}</p><button>비교 보기 <span>→</span></button></div></article>)}</div>
         </div>
       </section>
 
       <section className="section how" id="how">
-        <div><p className="sectionLabel">HOW IT WORKS</p><h2>복잡한 쇼핑을 더 단순하게</h2></div>
-        <div className="steps"><div><b>01</b><strong>상품 검색</strong><p>원하는 상품이나 카테고리를 검색합니다.</p></div><div><b>02</b><strong>조건 비교</strong><p>가격과 핵심 조건을 한 화면에서 비교합니다.</p></div><div><b>03</b><strong>판매처 이동</strong><p>마음에 드는 상품의 판매처로 안전하게 이동합니다.</p></div></div>
+        <div><p className="sectionLabel">HOW 9HO WORKS</p><h2>비교는 간단하게, 선택은 똑똑하게</h2></div>
+        <div className="steps"><div><b>01</b><strong>상품 검색</strong><p>궁금한 상품이나 카테고리를 찾아보세요.</p></div><div><b>02</b><strong>한눈에 비교</strong><p>가격과 핵심 조건, 판매처를 한 화면에서 비교합니다.</p></div><div><b>03</b><strong>더 나은 선택</strong><p>비교 결과를 확인하고 마음에 드는 판매처로 이동합니다.</p></div></div>
       </section>
 
       <SiteFooter />
