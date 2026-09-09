@@ -23,12 +23,12 @@ export default function Home() {
 
       <section className="hero">
         <div className="heroInner">
-          <p className="eyebrow">9HO 구호 · SMART SHOPPING</p>
-          <h1>호구 되기 전에, 9HO.<br/><span>사기 전에 비교하세요.</span></h1>
-          <p className="description">같은 상품도 가격과 조건은 다릅니다. 9HO 구호가 여러 쇼핑몰의 가격과 핵심 조건을 한곳에 모아 더 좋은 선택을 돕습니다.</p>
+          <p className="eyebrow">9HO 구호 · 좋은 것을 구(求)하다</p>
+          <h1>호구 되기 전에, 9HO.<br/><span>좋은 선택을 구하세요.</span></h1>
+          <p className="description">좋은 상품을 구하고, 좋은 가격을 구하고, 더 나은 선택을 구합니다. 여러 쇼핑몰의 가격과 핵심 조건을 한곳에서 비교해보세요.</p>
           <form className="search" action="#recommend">
             <span aria-hidden="true">⌕</span>
-            <input aria-label="상품 검색" placeholder="사기 전에, 먼저 비교해보세요" />
+            <input aria-label="상품 검색" placeholder="어떤 좋은 선택을 찾고 계세요?" />
             <button type="submit">비교하기</button>
           </form>
           <div className="quick"><b>지금 많이 비교하는 상품</b><a href="#recommend">노트북</a><a href="#recommend">무선이어폰</a><a href="#recommend">로봇청소기</a><a href="#recommend">모니터</a></div>
@@ -36,20 +36,20 @@ export default function Home() {
       </section>
 
       <section className="section" id="categories">
-        <div className="sectionHead"><div><p className="sectionLabel">9HO CATEGORY</p><h2>뭘 살지 정했다면, 이제 제대로 비교하세요</h2></div><p>상품군별로 가격과 꼭 확인해야 할 조건을 빠르게 살펴보세요.</p></div>
+        <div className="sectionHead"><div><p className="sectionLabel">FIND YOUR 9HO</p><h2>좋은 상품을 구하다</h2></div><p>필요한 상품을 찾고, 가격과 꼭 확인해야 할 조건을 함께 살펴보세요.</p></div>
         <div className="categoryGrid">{categories.map((item) => <a className="categoryCard" href="#recommend" key={item.name}><span className="categoryIcon">{item.icon}</span><strong>{item.name}</strong><small>{item.desc}</small><i>→</i></a>)}</div>
       </section>
 
       <section className="recommend" id="recommend">
         <div className="section recommendInner">
-          <div className="sectionHead"><div><p className="sectionLabel">9HO PICK · 구호 추천</p><h2>가격만 싼 상품보다, 잘 산 상품을 찾습니다</h2></div><p>가격·용도·핵심 조건·판매처를 함께 비교해 나에게 맞는 선택을 찾아보세요.</p></div>
+          <div className="sectionHead"><div><p className="sectionLabel">9HO PICK · 구호 추천</p><h2>좋은 가격, 더 나은 선택을 구하다</h2></div><p>단순히 싼 상품보다 가격·용도·핵심 조건·판매처를 함께 비교해 잘 산 선택을 찾습니다.</p></div>
           <div className="pickGrid">{picks.map((item, i) => <article className="pickCard" key={item.title}><div className="productVisual"><span>0{i+1}</span></div><div className="pickBody"><div className="badge">{item.badge}</div><small>{item.category}</small><h3>{item.title}</h3><p>{item.meta}</p><button>비교 보기 <span>→</span></button></div></article>)}</div>
         </div>
       </section>
 
       <section className="section how" id="how">
         <div><p className="sectionLabel">WHY 9HO?</p><h2>호구 되지 않는 쇼핑, 비교에서 시작합니다</h2></div>
-        <div className="steps"><div><b>01</b><strong>찾고</strong><p>사고 싶은 상품이나 카테고리를 검색합니다.</p></div><div><b>02</b><strong>비교하고</strong><p>가격과 핵심 조건, 판매처를 한눈에 비교합니다.</p></div><div><b>03</b><strong>잘 고르고</strong><p>나에게 맞는 조건을 확인한 뒤 원하는 판매처로 이동합니다.</p></div></div>
+        <div className="steps"><div><b>01</b><strong>좋은 상품을 구하고</strong><p>사고 싶은 상품과 나에게 맞는 선택지를 찾습니다.</p></div><div><b>02</b><strong>좋은 가격을 구하고</strong><p>가격과 핵심 조건, 판매처를 한눈에 비교합니다.</p></div><div><b>03</b><strong>좋은 선택을 구합니다</strong><p>비교한 정보를 바탕으로 나에게 맞는 상품을 선택합니다.</p></div></div>
       </section>
 
       <SiteFooter />
