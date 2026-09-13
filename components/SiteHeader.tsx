@@ -6,9 +6,8 @@ import { useRouter } from "next/navigation";
 import styles from "./SiteHeader.module.css";
 
 const nav = [
-  { label: "카테고리", href: "/#categories", description: "상품군별 비교", items: [["노트북", "/#categories"], ["스마트폰", "/#categories"], ["TV·가전", "/#categories"], ["디지털", "/#categories"]] },
-  { label: "추천", href: "/#recommend", description: "조건별 추천", items: [["업무용 추천", "/#recommend"], ["가성비 추천", "/#recommend"], ["인기상품", "/#recommend"], ["선물추천", "/#recommend"]] },
-  { label: "비교가이드", href: "/#how", description: "비교 기준과 이용방법", items: [["상품 검색", "/#how"], ["조건 비교", "/#how"], ["판매처 확인", "/#how"], ["제휴 안내", "/#how"]] },
+  { label: "베스트", href: "/#best", description: "지금 인기 있는 상품" },
+  { label: "카테고리", href: "/#categories", description: "상품군별로 빠르게 찾기" },
 ] as const;
 
 function BrandIcon() {
@@ -32,9 +31,10 @@ export default function SiteHeader() {
   const overlay = !scrolled && !menuOpen && !hovered;
   const submitSearch = (e: FormEvent) => {
     e.preventDefault();
-    if (!query.trim()) return;
+    const value = query.trim();
+    if (!value) return;
     setMenuOpen(false);
-    router.push(`/#recommend?q=${encodeURIComponent(query.trim())}`);
+    router.push(`/search?q=${encodeURIComponent(value)}`);
   };
 
   const go = () => setMenuOpen(false);
@@ -43,25 +43,20 @@ export default function SiteHeader() {
     <div className={styles.inner}>
       <Link className={styles.brand} href="/" onClick={go}><BrandIcon/><span className={styles.brandName}><span className={styles.brandNine}>9</span><span className={styles.brandHo}>HO</span><span className={styles.brandKo}>구호</span></span></Link>
       <nav className={styles.desktopNav} aria-label="주요 메뉴">
-        {nav.map((item) => <div className={styles.navItem} key={item.label}>
-          <Link className={styles.navLink} href={item.href}>{item.label}<span className={styles.chevron}/></Link>
-          <div className={styles.submenu}>
-            <div className={styles.submenuHead}><strong>{item.label}</strong><span>{item.description}</span></div>
-            <div className={styles.submenuGrid}>{item.items.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</div>
-            <Link className={styles.viewAll} href={item.href}>{item.label} 전체 보기 →</Link>
-          </div>
-        </div>)}
+        {nav.map((item) => <Link className={styles.navLink} key={item.label} href={item.href}>{item.label}</Link>)}
       </nav>
       <form className={styles.headerSearch} onSubmit={submitSearch}>
-        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="상품 검색" aria-label="상품 검색"/>
+        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="상품명·모델명 검색" aria-label="상품 검색"/>
         <button type="submit" aria-label="검색">⌕</button>
       </form>
       <button className={`${styles.menuButton}${menuOpen ? ` ${styles.open}` : ""}`} type="button" aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}><span/><span/><span/></button>
     </div>
     <nav className={`${styles.mobileNav}${menuOpen ? ` ${styles.open}` : ""}`} aria-label="모바일 메뉴">
       <div className={styles.mobileInner}>
-        <form className={styles.mobileSearch} onSubmit={submitSearch}><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="상품을 검색하세요"/><button type="submit">검색</button></form>
+        <form className={styles.mobileSearch} onSubmit={submitSearch}><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="상품명·모델명을 검색하세요"/><button type="submit">검색</button></form>
         {nav.map((item) => <Link key={item.label} href={item.href} onClick={go}><strong>{item.label}</strong><span>{item.description}</span></Link>)}
+        <Link href="/about" onClick={go}><strong>사이트 소개</strong><span>9HO 구호 소개</span></Link>
+        <Link href="/contact" onClick={go}><strong>문의</strong><span>서비스 문의</span></Link>
       </div>
     </nav>
   </header>;
