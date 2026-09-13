@@ -8,6 +8,7 @@ import styles from "./SiteHeader.module.css";
 const nav = [
   { label: "베스트", href: "/#best", description: "지금 인기 있는 상품" },
   { label: "카테고리", href: "/#categories", description: "상품군별로 빠르게 찾기" },
+  { label: "조건별 찾기", href: "/#discover", description: "가격대·용도·인기 검색으로 찾기" },
 ] as const;
 
 function BrandIcon() {
