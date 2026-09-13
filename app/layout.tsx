@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import FloatingQuickActions from "../components/FloatingQuickActions";
 import "./globals.css";
 import "./info-pages.css";
+import "./service-ui.css";
 
 export const metadata: Metadata = {
-  title: "9HO | 상품 비교·추천",
-  description: "사기 전에, 9HO. 여러 쇼핑몰의 상품과 가격, 핵심 조건을 한눈에 비교해 더 나은 선택을 돕는 상품 비교추천 서비스",
+  title: "9HO | 상품 가격비교",
+  description: "호구 되기 전에, 9HO. 상품명과 모델명을 검색하고 여러 판매처의 가격을 한곳에서 비교하는 상품 가격비교 서비스",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
