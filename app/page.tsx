@@ -5,6 +5,12 @@ import ProductFeed from "../components/ProductFeed";
 
 const categories = ["전체", "노트북·PC", "스마트폰", "TV·가전", "디지털", "생활가전", "생활용품", "주방", "선물"];
 const keywords = ["갤럭시북4 프로", "LG그램17", "로봇청소기", "아이폰16", "75인치 TV", "100만원대 노트북"];
+const discoveryGroups = [
+  { title: "가격대로 찾기", description: "예산에 맞춰 바로 둘러보세요", items: ["50만원 이하 노트북", "100만원대 노트북", "200만원 이하 TV", "50만원 이하 태블릿"] },
+  { title: "용도로 찾기", description: "쓰임에 맞는 상품을 빠르게 찾아보세요", items: ["대학생 노트북", "업무용 노트북", "1인가구 가전", "신혼 가전"] },
+  { title: "인기 검색", description: "많이 찾는 상품과 조건을 확인하세요", items: ["갤럭시북4 프로 가격비교", "LG그램17 최저가", "로보락 가격", "아이폰16 가격비교"] },
+  { title: "조건별 찾기", description: "필요한 조건부터 선택해보세요", items: ["75인치 TV", "무선청소기", "휴대용 모니터", "로봇청소기"] },
+];
 
 export default function Home() {
   return (
@@ -36,10 +42,20 @@ export default function Home() {
         <ProductFeed limit={8}/>
       </section>
 
-      <section className="keywordModule">
-        <div className="keywordModuleInner">
-          <div><span>POPULAR SEARCH</span><h2>많이 찾는 검색</h2></div>
-          <div className="keywordChips">{keywords.map((item) => <Link key={item} href={`/search?q=${encodeURIComponent(item)}`}>{item}<span>→</span></Link>)}</div>
+      <section className="discoveryHub" id="discover">
+        <div className="discoveryHubInner">
+          <div className="discoveryHubHead">
+            <div><span>FIND YOUR PICK</span><h2>조건으로 찾아보세요</h2></div>
+            <p>상품명을 몰라도 괜찮아요. 가격대·용도·인기 검색·조건에서 원하는 기준을 선택하면 관련 상품을 바로 볼 수 있습니다.</p>
+          </div>
+          <div className="discoveryGroups">
+            {discoveryGroups.map((group) => (
+              <section className="discoveryGroup" key={group.title}>
+                <h3>{group.title}</h3><p>{group.description}</p>
+                <div>{group.items.map((item) => <Link key={item} href={`/search?q=${encodeURIComponent(item)}`}><span>{item}</span><b>→</b></Link>)}</div>
+              </section>
+            ))}
+          </div>
         </div>
       </section>
 
