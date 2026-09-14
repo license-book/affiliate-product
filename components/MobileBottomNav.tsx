@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { readWishlist, WISHLIST_EVENT } from "../lib/wishlist";
 import styles from "./MobileBottomNav.module.css";
 
 function HomeIcon() {
@@ -24,6 +26,18 @@ export default function MobileBottomNav() {
   const pathname = usePathname();
   const homeActive = pathname === "/";
   const wishlistActive = pathname === "/wishlist";
+  const [wishlistCount, setWishlistCount] = useState(0);
+
+  useEffect(() => {
+    const sync = () => setWishlistCount(readWishlist().length);
+    sync();
+    window.addEventListener(WISHLIST_EVENT, sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener(WISHLIST_EVENT, sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
 
   const focusSearch = () => window.dispatchEvent(new CustomEvent("9ho:focus-search"));
   const openMenu = () => window.dispatchEvent(new CustomEvent("9ho:toggle-menu"));
@@ -34,7 +48,7 @@ export default function MobileBottomNav() {
         <Link href="/" className={homeActive ? styles.active : ""}><HomeIcon/><span>홈</span></Link>
         <button type="button" onClick={focusSearch}><SearchIcon/><span>검색</span></button>
         <Link href="/#categories"><GridIcon/><span>카테고리</span></Link>
-        <Link href="/wishlist" className={wishlistActive ? styles.active : ""}><HeartIcon/><span>찜</span></Link>
+        <Link href="/wishlist" className={`${styles.wishLink} ${wishlistActive ? styles.active : ""}`}><HeartIcon/>{wishlistCount > 0 && <b className={styles.badge}>{wishlistCount > 99 ? "99+" : wishlistCount}</b>}<span>찜</span></Link>
         <button type="button" onClick={openMenu}><MenuIcon/><span>전체메뉴</span></button>
       </nav>
       <div className={styles.spacer} aria-hidden="true" />
