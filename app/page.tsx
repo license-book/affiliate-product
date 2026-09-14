@@ -18,7 +18,7 @@ export default function Home() {
     <main>
       <SiteHeader />
 
-      <section className="serviceHero compactHero">
+      <section className={`serviceHero compactHero ${styles.heroMobileHidden}`}>
         <div className="serviceHeroInner">
           <div className="heroCopy">
             <p className="eyebrow">호구 되기 전에, 9HO.</p>
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </section>
 
-      <nav className="categoryStrip" id="categories" aria-label="상품 카테고리">
+      <nav className={`categoryStrip ${styles.categoryMobileFirst}`} id="categories" aria-label="상품 카테고리">
         <div className="categoryStripInner compactCategories">
           <div>{categories.map((item, index) => <Link className={index === 0 ? "activeCategory" : ""} key={item} href={index === 0 ? "/#best" : `/search?q=${encodeURIComponent(item)}`}>{item}</Link>)}</div>
         </div>
