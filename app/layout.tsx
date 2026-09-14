@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import FloatingQuickActions from "../components/FloatingQuickActions";
-import MobileBottomNav from "../components/MobileBottomNav";
 import "./globals.css";
 import "./info-pages.css";
 import "./service-ui.css";
+import "./search-cleanup.css";
 
 export const metadata: Metadata = {
   title: "9HO | 상품 가격비교",
@@ -16,7 +16,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <FloatingQuickActions />
-        <MobileBottomNav />
       </body>
     </html>
   );
