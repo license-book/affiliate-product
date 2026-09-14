@@ -1,0 +1,5 @@
+.heroSearchMobileHidden{}
+
+@media (max-width: 900px){
+  .heroSearchMobileHidden{display:none!important}
+}
