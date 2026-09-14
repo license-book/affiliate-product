@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import WishlistButton from "../../components/WishlistButton";
 import { demoProducts, formatWon } from "../../lib/demo-products";
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
@@ -13,7 +14,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
       <div className="searchResults">
         <div className="resultQueryTitle"><b>‘{query || "상품"}’</b> 검색 결과</div>
         <div className="resultTop"><div><span>검색결과</span><strong>{demoProducts.length}개 상품</strong></div><select aria-label="정렬"><option>낮은 가격순</option><option>인기순</option></select></div>
-        <div className="resultList">{demoProducts.map((product) => <Link href={`/product/${product.slug}`} className="resultItem" key={product.slug}><div className={`resultArt productArt ${product.tone}`}><span/></div><div className="resultInfo"><span className="productCategory">{product.category}</span><h2>{product.name}</h2><p>{product.model}</p><strong>{formatWon(product.price)}부터</strong><span>{product.sellers.length}개 판매처 가격비교 →</span></div></Link>)}</div>
+        <div className="resultList">{demoProducts.map((product) => <div key={product.slug} style={{position:"relative"}}><WishlistButton product={product}/><Link href={`/product/${product.slug}`} className="resultItem"><div className={`resultArt productArt ${product.tone}`}><span/></div><div className="resultInfo"><span className="productCategory">{product.category}</span><h2>{product.name}</h2><p>{product.model}</p><strong>{formatWon(product.price)}부터</strong><span>{product.sellers.length}개 판매처 가격비교 →</span></div></Link></div>)}</div>
         <p className="demoNote pageNote">현재 검색 결과는 디자인 검토용 샘플 데이터입니다. AdPick API 연결 후 실제 검색 결과로 교체됩니다.</p>
       </div>
     </section>
