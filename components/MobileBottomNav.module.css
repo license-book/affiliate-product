@@ -3,5 +3,7 @@
 .nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav .active{color:#5b5ff2}
 .nav a:active,.nav button:active{transform:scale(.96)}
+.wishLink{position:relative}
+.badge{position:absolute;top:2px;left:50%;margin-left:7px;display:grid;place-items:center;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:#5b5ff2;color:#fff;font-size:9px;line-height:1;font-weight:900;box-shadow:0 0 0 2px #fff}
 .spacer{display:block;height:calc(72px + env(safe-area-inset-bottom))}
 @media(min-width:901px){.nav,.spacer{display:none}}
