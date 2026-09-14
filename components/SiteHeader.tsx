@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./SiteHeader.module.css";
 
@@ -25,6 +25,7 @@ function MenuIcon({ open }: { open: boolean }) {
 
 export default function SiteHeader() {
   const router = useRouter();
+  const mobileSearchRef = useRef<HTMLInputElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -32,9 +33,21 @@ export default function SiteHeader() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
+    const onFocusSearch = () => {
+      window.scrollTo({ top: Math.max(window.scrollY, 40), behavior: "smooth" });
+      window.setTimeout(() => mobileSearchRef.current?.focus(), 180);
+    };
+    const onToggleMenu = () => setMenuOpen((value) => !value);
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("9ho:focus-search", onFocusSearch as EventListener);
+    window.addEventListener("9ho:toggle-menu", onToggleMenu as EventListener);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("9ho:focus-search", onFocusSearch as EventListener);
+      window.removeEventListener("9ho:toggle-menu", onToggleMenu as EventListener);
+    };
   }, []);
 
   const overlay = !scrolled && !menuOpen && !hovered;
@@ -67,7 +80,7 @@ export default function SiteHeader() {
       </div>
       <div className={styles.mobileStickyRow}>
         <form className={styles.mobileHeaderSearch} onSubmit={submitSearch}>
-          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="찾고 싶은 상품을 검색해 보세요" aria-label="상품 검색"/>
+          <input ref={mobileSearchRef} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="찾고 싶은 상품을 검색해 보세요" aria-label="상품 검색"/>
           <button type="submit" aria-label="검색"><SearchIcon/></button>
         </form>
         <button className={styles.mobileScrollMenu} type="button" aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}><MenuIcon open={menuOpen}/></button>
