@@ -4,5 +4,4 @@
 .nav .active{color:#5b5ff2}
 .nav a:active,.nav button:active{transform:scale(.96)}
 .spacer{display:block;height:calc(72px + env(safe-area-inset-bottom))}
-:global(.floatingActions){bottom:86px!important}
-@media(min-width:901px){.nav,.spacer{display:none}:global(.floatingActions){bottom:24px!important}}
+@media(min-width:901px){.nav,.spacer{display:none}}
