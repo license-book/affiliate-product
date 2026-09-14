@@ -2,6 +2,7 @@ import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import ProductFeed from "../components/ProductFeed";
+import styles from "./page.module.css";
 
 const categories = ["전체", "노트북·PC", "스마트폰", "TV·가전", "디지털", "생활가전", "생활용품", "주방", "선물"];
 const keywords = ["갤럭시북4 프로", "LG그램17", "로봇청소기", "아이폰16", "75인치 TV", "100만원대 노트북"];
@@ -23,7 +24,7 @@ export default function Home() {
             <p className="eyebrow">호구 되기 전에, 9HO.</p>
             <h1>상품 찾고,<br/><span>가격 바로 비교.</span></h1>
           </div>
-          <form className="serviceSearch" action="/search">
+          <form className={`serviceSearch ${styles.heroSearchMobileHidden}`} action="/search">
             <input name="q" aria-label="상품 검색" placeholder="상품명·모델명을 검색하세요" />
             <button type="submit">검색</button>
           </form>
