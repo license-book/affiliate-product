@@ -19,6 +19,10 @@ function SearchIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.2 4.2"/></svg>;
 }
 
+function MenuIcon({ open }: { open: boolean }) {
+  return <span className={`${styles.menuGlyph}${open ? ` ${styles.open}` : ""}`} aria-hidden="true"><span/><span/><span/></span>;
+}
+
 export default function SiteHeader() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -59,13 +63,16 @@ export default function SiteHeader() {
           <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="상품명·모델명 검색" aria-label="상품 검색"/>
           <button type="submit" aria-label="검색"><SearchIcon/></button>
         </form>
-        <button className={`${styles.menuButton}${menuOpen ? ` ${styles.open}` : ""}`} type="button" aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}><span/><span/><span/></button>
+        <button className={styles.menuButton} type="button" aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}><MenuIcon open={menuOpen}/></button>
       </div>
-      <form className={styles.mobileHeaderSearch} onSubmit={submitSearch}>
-        <SearchIcon/>
-        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="찾고 싶은 상품을 검색해 보세요" aria-label="상품 검색"/>
-        <button type="submit">검색</button>
-      </form>
+      <div className={styles.mobileStickyRow}>
+        <form className={styles.mobileHeaderSearch} onSubmit={submitSearch}>
+          <SearchIcon/>
+          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="찾고 싶은 상품을 검색해 보세요" aria-label="상품 검색"/>
+          <button type="submit">검색</button>
+        </form>
+        <button className={styles.mobileScrollMenu} type="button" aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}><MenuIcon open={menuOpen}/></button>
+      </div>
     </div>
     <nav className={`${styles.mobileNav}${menuOpen ? ` ${styles.open}` : ""}`} aria-label="모바일 메뉴">
       <div className={styles.mobileInner}>
