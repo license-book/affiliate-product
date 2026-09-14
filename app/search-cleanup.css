@@ -1,0 +1,6 @@
+.searchResultsWrapNoHero{padding-top:124px}
+.resultQueryTitle{margin:0 0 18px;font-size:20px;letter-spacing:-.03em}
+@media(max-width:900px){
+  .searchResultsWrapNoHero{padding-top:132px}
+  .resultQueryTitle{margin-bottom:14px;font-size:17px}
+}
