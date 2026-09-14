@@ -61,10 +61,14 @@ export default function SiteHeader() {
         </form>
         <button className={`${styles.menuButton}${menuOpen ? ` ${styles.open}` : ""}`} type="button" aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}><span/><span/><span/></button>
       </div>
+      <form className={styles.mobileHeaderSearch} onSubmit={submitSearch}>
+        <SearchIcon/>
+        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="찾고 싶은 상품을 검색해 보세요" aria-label="상품 검색"/>
+        <button type="submit">검색</button>
+      </form>
     </div>
     <nav className={`${styles.mobileNav}${menuOpen ? ` ${styles.open}` : ""}`} aria-label="모바일 메뉴">
       <div className={styles.mobileInner}>
-        <form className={styles.mobileSearch} onSubmit={submitSearch}><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="상품명·모델명을 검색하세요"/><button type="submit">검색</button></form>
         {nav.map((item) => <Link key={item.label} href={item.href} onClick={go}><strong>{item.label}</strong><span>{item.description}</span></Link>)}
         <Link href="/about" onClick={go}><strong>사이트 소개</strong><span>9HO 구호 소개</span></Link>
         <Link href="/contact" onClick={go}><strong>문의</strong><span>서비스 문의</span></Link>
