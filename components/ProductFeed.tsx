@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { demoProducts, formatWon, type DemoProduct } from "../lib/demo-products";
+import WishlistButton from "./WishlistButton";
 
 function ProductArt({ tone }: { tone: string }) {
   return <div className={`productArt ${tone}`} aria-hidden="true"><span /></div>;
@@ -33,6 +34,7 @@ export default function ProductFeed({ limit = 8 }: { limit?: number }) {
   return <>
     <div className="productGrid">
       {demoProducts.slice(0, limit).map((product) => <article className="productCard" key={product.slug}>
+        <WishlistButton product={product} />
         <Link href={`/product/${product.slug}`} className="productCardMain">
           <ProductArt tone={product.tone}/>
           <div className="productCardBody">
