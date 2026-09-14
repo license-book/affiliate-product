@@ -1,0 +1,12 @@
+/* Keep product detail media fully below the fixed search/header area. */
+.productDetailWrap{padding-top:132px}
+
+@media(max-width:900px){
+  .productDetailWrap{padding-top:156px!important}
+  .productDetailTop{align-items:start}
+  .detailArt{margin-top:0}
+}
+
+@media(max-width:520px){
+  .productDetailWrap{padding-top:168px!important}
+}
