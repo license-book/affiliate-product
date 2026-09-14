@@ -1,5 +1,9 @@
 .heroSearchMobileHidden{}
+.heroMobileHidden{}
+.categoryMobileFirst{}
 
 @media (max-width: 900px){
   .heroSearchMobileHidden{display:none!important}
+  .heroMobileHidden{display:none!important}
+  .categoryMobileFirst{padding-top:122px}
 }
