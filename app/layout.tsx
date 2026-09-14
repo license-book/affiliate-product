@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FloatingQuickActions from "../components/FloatingQuickActions";
+import MobileBottomNav from "../components/MobileBottomNav";
 import "./globals.css";
 import "./info-pages.css";
 import "./service-ui.css";
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {children}
         <FloatingQuickActions />
+        <MobileBottomNav />
       </body>
     </html>
   );
