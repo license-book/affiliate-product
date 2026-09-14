@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import SiteHeader from "../../../components/SiteHeader";
 import SiteFooter from "../../../components/SiteFooter";
+import WishlistButton from "../../../components/WishlistButton";
 import { demoProducts, formatWon } from "../../../lib/demo-products";
 
 export function generateStaticParams() {
@@ -22,6 +23,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <span className="productCategory">{product.category}</span>
           <h1>{product.name}</h1>
           <p className="productModel">{product.model}</p>
+          <WishlistButton product={product} variant="detail" />
           <div className="detailPriceBox"><span>현재 비교 최저가</span><strong>{formatWon(product.price)}부터</strong><p>{product.sellers.length}개 판매처 가격을 비교합니다.</p></div>
         </div>
       </div>
