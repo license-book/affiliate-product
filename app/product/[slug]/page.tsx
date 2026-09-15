@@ -3,6 +3,7 @@ import Link from "next/link";
 import SiteHeader from "../../../components/SiteHeader";
 import SiteFooter from "../../../components/SiteFooter";
 import WishlistButton from "../../../components/WishlistButton";
+import RecentProductTracker from "../../../components/RecentProductTracker";
 import { demoProducts, formatWon } from "../../../lib/demo-products";
 
 export function generateStaticParams() {
@@ -15,6 +16,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound();
 
   return <main>
+    <RecentProductTracker product={product} />
     <SiteHeader />
     <section className="productDetailWrap">
       <div className="productDetailTop">
