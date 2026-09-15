@@ -2,6 +2,7 @@ import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import ProductFeed from "../components/ProductFeed";
+import RecentlyViewed from "../components/RecentlyViewed";
 import styles from "./page.module.css";
 
 const categories = ["전체", "노트북·PC", "스마트폰", "TV·가전", "디지털", "생활가전", "생활용품", "주방", "선물"];
@@ -37,6 +38,8 @@ export default function Home() {
           <div>{categories.map((item, index) => <Link className={index === 0 ? "activeCategory" : ""} key={item} href={index === 0 ? "/#best" : `/search?q=${encodeURIComponent(item)}`}>{item}</Link>)}</div>
         </div>
       </nav>
+
+      <RecentlyViewed />
 
       <section className="serviceSection firstFeed" id="best">
         <div className="serviceSectionHead"><div><span>BEST</span><h2>지금 인기 있는 상품</h2></div><p>화면 검토용 샘플입니다. AdPick 연결 후 실제 인기상품으로 자동 교체됩니다.</p></div>
