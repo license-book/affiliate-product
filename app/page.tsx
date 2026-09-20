@@ -14,8 +14,8 @@ export default function Home() {
       <form className="mobileSearch" action="/search"><span>⌕</span><input name="q" aria-label="상품 검색" placeholder="상품명이나 모델명을 검색해 보세요"/><button type="submit">검색</button></form>
     </section>
     <nav className="mobileTabs" id="categories">{categories.map((x,i)=><Link className={i===0?"active":""} key={x} href={x==="홈"?"/":x==="전체"?"/#best":`/search?q=${encodeURIComponent(x)}`}>{x}</Link>)}</nav>
-    <section className="quickChips"><div>{chips.map(x=><Link key={x} href={x==="BEST 100"?"/#best":`/search?q=${encodeURIComponent(x)}`}>{x}<span>›</span></Link>)}</div></section>
     <RecentlyViewed />
+    <section className="quickChips"><div>{chips.map(x=><Link key={x} href={x==="BEST 100"?"/#best":`/search?q=${encodeURIComponent(x)}`}>{x}<span>›</span></Link>)}</div></section>
     <section className="feedSection" id="best"><div className="feedTitle"><div><small>NOW</small><h2>지금 많이 보는 상품</h2></div><Link href="/search?q=인기상품">전체보기</Link></div><ProductFeed limit={8}/></section>
     <section className="feedSection"><div className="feedTitle"><div><small>UNDER 5,000</small><h2>5천원 이하 발견</h2></div><Link href="/search?q=5000원이하">더보기</Link></div><p className="feedDesc">가볍게 둘러보다 발견하는 실속 상품</p><ProductFeed limit={4}/></section>
     <section className="feedSection"><div className="feedTitle"><div><small>FOR YOU</small><h2>조건으로 골라보기</h2></div></div><div className="discoveryList">{["대학생·새학기","1인가구 필수템","신혼·이사가전","홈오피스","여행 준비물","선물 추천"].map(x=><Link href={`/search?q=${encodeURIComponent(x)}`} key={x}><strong>{x}</strong><span>›</span></Link>)}</div></section>
