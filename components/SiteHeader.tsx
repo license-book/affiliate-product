@@ -1,10 +1,5 @@
 "use client";
 import Link from "next/link";
-import {FormEvent,useState} from "react";
-import {useRouter} from "next/navigation";
 import styles from "./SiteHeader.module.css";
-export default function SiteHeader(){
- const router=useRouter(); const [q,setQ]=useState("");
- const submit=(e:FormEvent)=>{e.preventDefault();if(q.trim())router.push(`/search?q=${encodeURIComponent(q.trim())}`)};
- return <header className={styles.header}><div className={styles.row}><Link href="/" className={styles.brand}><b>9</b><strong>HO</strong><em>구호</em></Link><div className={styles.actions}><Link href="/wishlist" aria-label="찜">♡</Link><Link href="/about" aria-label="메뉴">☰</Link></div></div><form className={styles.search} onSubmit={submit}><span>⌕</span><input value={q} onChange={e=>setQ(e.target.value)} placeholder="상품 검색"/><button aria-label="검색">→</button></form></header>
-}
+function SearchIcon(){return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m15.7 15.7 4.8 4.8"/></svg>}
+export default function SiteHeader(){return <header className={styles.header}><div className={styles.row}><Link href="/" className={styles.brand}><b>9</b><strong>HO</strong><em>구호</em></Link><Link className={styles.searchButton} href="/search" aria-label="검색"><SearchIcon/></Link></div></header>}
