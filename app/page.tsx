@@ -11,7 +11,6 @@ export default function Home() {
     <SiteHeader />
     <section className="mobileIntro">
       <div className="introCopy"><span>9HO PICK</span><h1>오늘은<br/>뭘 비교해볼까요?</h1><p>여러 판매처의 가격을 한 번에 비교해요.</p></div>
-      <form className="mobileSearch" action="/search"><span>⌕</span><input name="q" aria-label="상품 검색" placeholder="상품명이나 모델명을 검색해 보세요"/><button type="submit">검색</button></form>
     </section>
     <nav className="mobileTabs" id="categories">{categories.map((x,i)=><Link className={i===0?"active":""} key={x} href={x==="홈"?"/":x==="전체"?"/#best":`/search?q=${encodeURIComponent(x)}`}>{x}</Link>)}</nav>
     <RecentlyViewed />
