@@ -6,6 +6,7 @@ import "./info-pages.css";
 import "./service-ui.css";
 import "./search-cleanup.css";
 import "./product-detail-fix.css";
+import "./mobile-app.css";
 
 export const metadata: Metadata = {
   title: "9HO | 상품 가격비교",
