@@ -5,15 +5,15 @@ import { useState } from "react";
 import { demoProducts, formatWon, type DemoProduct } from "../lib/demo-products";
 import WishlistButton from "./WishlistButton";
 
-function ProductArt({ tone }: { tone: string }) {
-  return <div className={`productArt ${tone}`} aria-hidden="true"><span /></div>;
+function ProductArt({ tone, imageUrl, name="" }: { tone: string; imageUrl?: string; name?: string }) {
+  return <div className={`productArt ${tone}`}>{imageUrl?<img src={imageUrl} alt={name} loading="lazy" referrerPolicy="no-referrer"/>:<span />}</div>;
 }
 
 function QuickCompare({ product, onClose }: { product: DemoProduct; onClose: () => void }) {
   return <div className="quickModalBackdrop" role="presentation" onClick={onClose}>
     <section className="quickModal" role="dialog" aria-modal="true" aria-label={`${product.name} 빠른 가격비교`} onClick={(e) => e.stopPropagation()}>
       <button className="quickModalClose" type="button" aria-label="닫기" onClick={onClose}>×</button>
-      <div className="quickModalArt"><ProductArt tone={product.tone}/></div>
+      <div className="quickModalArt"><ProductArt tone={product.tone} imageUrl={product.imageUrl} name={product.name}/></div>
       <div className="quickModalBody">
         <span className="productCategory">{product.category}</span>
         <h2>{product.name}</h2>
@@ -29,11 +29,11 @@ function QuickCompare({ product, onClose }: { product: DemoProduct; onClose: () 
   </div>;
 }
 
-export default function ProductFeed({ limit = 8, variant = "grid" }: { limit?: number; variant?: "grid"|"list"|"rail" }) {
+export default function ProductFeed({ limit = 8, variant = "grid", products = demoProducts }: { limit?: number; variant?: "grid"|"list"|"rail"; products?: DemoProduct[] }) {
   const [selected, setSelected] = useState<DemoProduct | null>(null);
   return <>
     <div className={`productGrid productGrid--${variant}`}>
-      {demoProducts.slice(0, limit).map((product) => <article className="productCard" key={product.slug}>
+      {products.slice(0, limit).map((product) => <article className="productCard" key={product.slug}>
         <WishlistButton product={product} />
         <Link href={`/product/${product.slug}`} className="productCardMain">
           <ProductArt tone={product.tone}/>
