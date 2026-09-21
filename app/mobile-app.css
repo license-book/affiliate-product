@@ -114,3 +114,6 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 
 /* Long-tail discovery: search-like condition tags, visually distinct from purpose cards */
 .homeLongtailTags{display:flex;flex-wrap:wrap;gap:8px}.homeLongtailTags a{max-width:100%;min-height:38px;padding:8px 12px;border:1px solid #e4e4e6;border-radius:999px;background:#fff;display:flex;align-items:center;gap:7px;color:#333;font-size:11px;font-weight:700;line-height:1.35}.homeLongtailTags a:nth-child(3n+1){background:#f7f7f8}.homeLongtailTags svg{flex:0 0 15px;width:15px;height:15px;fill:none;stroke:#777;stroke-width:1.7;stroke-linecap:round}.homeLongtailTags span{word-break:keep-all}
+
+/* SEO long-tail landing */
+.pickHero{padding:34px 18px 26px;border-bottom:1px solid #eee}.pickHero small{font-size:9px;font-weight:900;letter-spacing:.14em;color:#777}.pickHero h1{margin:9px 0 10px;font-size:26px;line-height:1.25;letter-spacing:-.05em}.pickHero p,.pickGuide p{margin:0;font-size:12px;line-height:1.7;color:#666}.pickGuide{padding:22px 18px;background:#f7f7f8}.pickGuide h2,.pickRelated h2{margin:0 0 8px;font-size:16px}.pickRelated{padding:24px 18px 110px;border-top:8px solid #f6f6f6}
