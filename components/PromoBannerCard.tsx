@@ -1,0 +1,2 @@
+import Link from "next/link";import type {PromoBanner} from "../lib/promo-banners";
+export default function PromoBannerCard({banner,compact=false}:{banner:PromoBanner;compact?:boolean}){return <Link href={banner.href} className={`promoBanner promoBanner--${banner.tone} ${compact?"promoBanner--compact":""}`}><span className="promoBannerVisual" aria-hidden="true"><i/><b/><em/></span><span className="promoBannerCopy"><small>{banner.eyebrow}</small><strong>{banner.title}</strong><p>{banner.description}</p><span>보러가기 <b>›</b></span></span></Link>}
