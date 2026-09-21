@@ -34,3 +34,18 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .athlerHome .feedSection .productGrid--rail .quickCompareButton{display:none}
 .feedSection--soft{background:#f7f7f7;padding-top:26px;padding-bottom:28px}
 .feedSection--soft .productCard{background:transparent}
+
+/* Compact single-row list matching reference */
+.athlerHome .feedSection .productGrid--list{display:flex!important;flex-direction:column!important;gap:0!important}
+.athlerHome .feedSection .productGrid--list .productCard{position:relative;display:block!important;padding:9px 0!important;border-bottom:1px solid #ededed!important;min-height:112px}
+.athlerHome .feedSection .productGrid--list .productCardMain{display:grid!important;grid-template-columns:90px minmax(0,1fr);column-gap:11px;align-items:start}
+.athlerHome .feedSection .productGrid--list .productArt{grid-column:1;width:90px!important;height:104px!important;aspect-ratio:auto!important;border-radius:3px!important}
+.athlerHome .feedSection .productGrid--list .productCardBody{grid-column:2;padding:7px 36px 0 0!important;min-width:0}
+.athlerHome .feedSection .productGrid--list .productCategory{font-size:15px!important;font-weight:900!important;color:#111!important}
+.athlerHome .feedSection .productGrid--list .productCardBody h3{font-size:14px!important;font-weight:500!important;line-height:1.35!important;margin:5px 0 4px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block!important}
+.athlerHome .feedSection .productGrid--list .productModel{display:none}
+.athlerHome .feedSection .productGrid--list .productPrice{display:inline-block;font-size:16px!important;font-weight:900!important;color:#111;margin-top:2px}
+.athlerHome .feedSection .productGrid--list .sellerCount{display:none}
+.athlerHome .feedSection .productGrid--list .quickCompareButton{display:none!important}
+.athlerHome .feedSection .productGrid--list .wishlistButton{position:absolute!important;right:4px!important;top:39px!important;z-index:3}
+@media(max-width:390px){.athlerHome .feedSection .productGrid--list .productCardMain{grid-template-columns:82px minmax(0,1fr)}.athlerHome .feedSection .productGrid--list .productArt{width:82px!important;height:96px!important}}
