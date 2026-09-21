@@ -1,7 +1,11 @@
-export type LongtailKeyword={label:string;group:"price"|"space"|"gift"|"digital"|"travel"|"pet"|"living"|"season"};
-export const longtailKeywords:LongtailKeyword[]=[
-{label:"소음 적은 원룸용 청소기",group:"space"},{label:"5만원 이하 부모님 선물",group:"gift"},{label:"책상 좁아도 쓰기 좋은 모니터",group:"digital"},{label:"설치 필요 없는 소형 식기세척기",group:"space"},{label:"차박할 때 전기 없이 쓰는 용품",group:"travel"},{label:"반려견 털 청소하기 좋은 청소기",group:"pet"},{label:"기내 반입 가능한 여행용품",group:"travel"},{label:"10만원대 가성비 태블릿",group:"digital"},
-{label:"3만원 이하 집들이 선물",group:"gift"},{label:"1만원 이하 실용적인 선물",group:"price"},{label:"좁은 원룸에 놓기 좋은 가전",group:"space"},{label:"수납공간 적은 집 정리용품",group:"space"},{label:"재택근무 책상 공간 줄이는 제품",group:"digital"},{label:"노트북과 같이 쓰기 좋은 휴대용 모니터",group:"digital"},{label:"충전 오래가는 무선 이어폰",group:"digital"},{label:"출퇴근용 가벼운 보조배터리",group:"digital"},
-{label:"장거리 운전에 편한 차량용품",group:"travel"},{label:"캠핑 초보가 먼저 사는 용품",group:"travel"},{label:"여행가방 부피 줄이는 정리용품",group:"travel"},{label:"비행기에서 쓰기 좋은 목베개",group:"travel"},{label:"고양이 털 청소하기 좋은 제품",group:"pet"},{label:"반려동물 냄새 줄이는 생활용품",group:"pet"},{label:"설거지 줄여주는 주방용품",group:"living"},{label:"전자레인지로 간단히 쓰는 조리도구",group:"living"},
-{label:"욕실 공간 적게 차지하는 수납용품",group:"space"},{label:"전선 정리하기 좋은 데스크용품",group:"living"},{label:"여름 전기료 부담 적은 냉방용품",group:"season"},{label:"겨울 원룸에서 쓰기 좋은 난방용품",group:"season"},{label:"장마철 빨래 말리기 좋은 제품",group:"season"},{label:"미세먼지 많은 날 필요한 생활가전",group:"season"}
-];
+export type LongtailKeyword={
+ slug:string;label:string;group:"price"|"space"|"gift"|"digital"|"travel"|"pet"|"living"|"season";
+ query:string;intro:string;
+};
+const rows:[string,string,LongtailKeyword["group"]][]=[
+["quiet-vacuum-small-room","소음 적은 원룸용 청소기","space"],["gift-for-parents-under-50000","5만원 이하 부모님 선물","gift"],["monitor-for-small-desk","책상 좁아도 쓰기 좋은 모니터","digital"],["compact-dishwasher-no-install","설치 필요 없는 소형 식기세척기","space"],["off-grid-car-camping-items","차박할 때 전기 없이 쓰는 용품","travel"],["vacuum-for-dog-hair","반려견 털 청소하기 좋은 청소기","pet"],["carry-on-travel-items","기내 반입 가능한 여행용품","travel"],["value-tablet-100k","10만원대 가성비 태블릿","digital"],
+["housewarming-gift-under-30000","3만원 이하 집들이 선물","gift"],["practical-gift-under-10000","1만원 이하 실용적인 선물","price"],["appliances-for-small-studio","좁은 원룸에 놓기 좋은 가전","space"],["storage-for-small-home","수납공간 적은 집 정리용품","space"],["compact-home-office-items","재택근무 책상 공간 줄이는 제품","digital"],["portable-monitor-for-laptop","노트북과 같이 쓰기 좋은 휴대용 모니터","digital"],["long-battery-wireless-earbuds","충전 오래가는 무선 이어폰","digital"],["light-powerbank-for-commute","출퇴근용 가벼운 보조배터리","digital"],
+["car-items-for-long-drive","장거리 운전에 편한 차량용품","travel"],["camping-gear-for-beginners","캠핑 초보가 먼저 사는 용품","travel"],["travel-packing-organizers","여행가방 부피 줄이는 정리용품","travel"],["neck-pillow-for-flight","비행기에서 쓰기 좋은 목베개","travel"],["cleaning-for-cat-hair","고양이 털 청소하기 좋은 제품","pet"],["pet-odor-home-items","반려동물 냄새 줄이는 생활용품","pet"],["kitchen-items-less-dishes","설거지 줄여주는 주방용품","living"],["microwave-cooking-tools","전자레인지로 간단히 쓰는 조리도구","living"],
+["compact-bathroom-storage","욕실 공간 적게 차지하는 수납용품","space"],["desk-cable-organizers","전선 정리하기 좋은 데스크용품","living"],["energy-saving-summer-cooling","여름 전기료 부담 적은 냉방용품","season"],["heating-for-small-studio","겨울 원룸에서 쓰기 좋은 난방용품","season"],["rainy-season-laundry-drying","장마철 빨래 말리기 좋은 제품","season"],["fine-dust-home-appliances","미세먼지 많은 날 필요한 생활가전","season"]];
+export const longtailKeywords:LongtailKeyword[]=rows.map(([slug,label,group])=>({slug,label,group,query:label,intro:`${label}을 찾을 때 가격만 보지 않고 크기·사용환경·편의성을 함께 살펴보세요. 9HO에서 관련 상품과 판매처 가격을 비교해 선택 조건을 좁혀볼 수 있습니다.`}));
+export const getLongtail=(slug:string)=>longtailKeywords.find(x=>x.slug===slug);
