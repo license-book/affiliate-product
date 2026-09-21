@@ -19,6 +19,7 @@ export type DemoProduct = {
   shippingText?: string;
   shippingFee?: number;
   optionText?: string;
+  detailImages?: string[];
 };
 
 export const demoProducts: DemoProduct[] = [
