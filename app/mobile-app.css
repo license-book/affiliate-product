@@ -52,3 +52,6 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 
 /* Show comparison-store count in compact list */
 .athlerHome .feedSection .productGrid--list .sellerCount{display:block!important;margin-top:5px;font-size:11px!important;color:#8a8a8a!important;font-weight:600}
+
+/* Conditional commerce badges: render only when API supplies values */
+.productBadges{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}.productBadges span{display:inline-flex;align-items:center;min-height:20px;padding:2px 6px;border-radius:5px;font-size:9px;font-weight:800;line-height:1.2;white-space:nowrap}.badgeLowest{background:#111;color:#fff}.badgeDrop{background:#fff1ed;color:#f04d23}.badgeCoupon{background:#f2efff;color:#6754d9}.badgeShipping{background:#eef7ff;color:#3477b8}.productGrid--list .productBadges{margin-top:5px}.productGrid--rail .productBadges{gap:3px}.productGrid--rail .productBadges span{font-size:8px;padding:2px 5px}
