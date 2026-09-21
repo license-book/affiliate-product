@@ -75,3 +75,6 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 
 /* Align all controls in product action bar */
 .productActionBar{grid-template-columns:58px 58px minmax(0,1fr)!important;align-items:center!important}.productActionIcon{overflow:hidden!important}.productActionIcon>button{position:static!important;inset:auto!important;margin:0!important;padding:0!important;width:100%!important;height:52px!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:1px!important;font-size:9px!important}.productActionIcon>button svg{width:21px!important;height:21px!important}.productShareButton,.productActionPrimary{margin:0!important;box-sizing:border-box!important}.productActionPrimary{width:100%!important}
+
+/* Remove legacy detail top whitespace: header should meet hero image */
+.productDetailWrap{margin-top:0!important;padding-top:0!important}.productDetailTop{margin-top:0!important;padding-top:0!important}.productDetailMobileStack>.detailArt{margin-top:0!important;min-height:0!important;height:auto!important;aspect-ratio:1/1!important}
