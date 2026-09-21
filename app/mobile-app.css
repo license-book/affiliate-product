@@ -20,3 +20,17 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .athlerHome .feedSection .productPrice{font-size:16px!important;margin-top:7px}
 .athlerHome .feedSection .quickCompareButton{grid-column:2;width:auto!important;margin:8px 0 0!important;padding:8px 10px!important;justify-self:start}
 @media(max-width:390px){.athlerHome .feedSection .productCard{grid-template-columns:104px minmax(0,1fr);column-gap:12px}.athlerHome .feedSection .productArt{width:104px!important;height:104px!important}}
+
+/* Mixed product layouts by home section */
+.athlerHome .feedSection .productGrid--grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:26px 8px!important}
+.athlerHome .feedSection .productGrid--grid .productCard{display:block!important;padding:0!important;border-bottom:0!important}
+.athlerHome .feedSection .productGrid--grid .productArt{width:100%!important;height:auto!important;aspect-ratio:1/1.12!important}
+.athlerHome .feedSection .productGrid--grid .quickCompareButton{width:calc(100% - 4px)!important;margin:6px 2px 0!important}
+.athlerHome .feedSection .productGrid--rail{display:flex!important;flex-direction:row!important;gap:10px!important;overflow-x:auto;padding:0 4px 8px;scroll-snap-type:x proximity;scrollbar-width:none}
+.athlerHome .feedSection .productGrid--rail::-webkit-scrollbar{display:none}
+.athlerHome .feedSection .productGrid--rail .productCard{display:block!important;flex:0 0 152px;padding:0!important;border-bottom:0!important;scroll-snap-align:start}
+.athlerHome .feedSection .productGrid--rail .productArt{width:152px!important;height:170px!important;aspect-ratio:auto!important}
+.athlerHome .feedSection .productGrid--rail .productModel,.athlerHome .feedSection .productGrid--rail .sellerCount{display:none}
+.athlerHome .feedSection .productGrid--rail .quickCompareButton{display:none}
+.feedSection--soft{background:#f7f7f7;padding-top:26px;padding-bottom:28px}
+.feedSection--soft .productCard{background:transparent}
