@@ -10,6 +10,15 @@ export type DemoProduct = {
   detailType?: "compare" | "single" | "similar";
   sameProductMatched?: boolean;
   affiliateUrl?: string;
+  originalPrice?: number;
+  discountRate?: number;
+  couponDiscount?: number;
+  instantDiscount?: number;
+  reward?: number;
+  installments?: string;
+  shippingText?: string;
+  shippingFee?: number;
+  optionText?: string;
 };
 
 export const demoProducts: DemoProduct[] = [
