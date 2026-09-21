@@ -128,3 +128,10 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 
 /* 9HO ranking foundation */
 .rankHero{padding:32px 18px 24px}.rankHero small{font-size:9px;font-weight:900;letter-spacing:.14em;color:#777}.rankHero h1{margin:8px 0;font-size:27px;letter-spacing:-.05em}.rankHero p,.rankPolicy p{font-size:11px;line-height:1.7;color:#777}.rankCats{display:flex;gap:7px;overflow-x:auto;padding:0 18px 18px;scrollbar-width:none}.rankCats a{flex:0 0 auto;padding:8px 12px;border-radius:18px;background:#f4f4f5;color:#333;font-size:11px;font-weight:800}.rankPending{margin:0 18px;padding:28px 18px;border-radius:14px;background:#f7f7f8;text-align:center}.rankPending strong{font-size:15px}.rankPending p{font-size:11px;line-height:1.6;color:#777}.rankPending div{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}.rankPending span{padding:5px 8px;background:#fff;border-radius:10px;font-size:9px}.rankPolicy{padding:26px 18px 110px}.rankPolicy h2{font-size:16px}
+
+/* Mobile product cards: keep quick compare fully visible */
+.productGrid--grid .productCard{height:auto!important;min-height:0!important;overflow:visible!important;padding-bottom:12px!important}
+.productGrid--grid .productCardBody{height:auto!important;min-height:0!important}
+.productGrid--grid .quickCompareButton{position:relative!important;display:block!important;width:calc(100% - 4px)!important;margin:10px 2px 0!important;min-height:36px!important;height:36px!important;overflow:visible!important;visibility:visible!important}
+.productGrid--grid{align-items:start!important;row-gap:22px!important;overflow:visible!important}
+@media(max-width:480px){.productGrid--grid .productCard{margin-bottom:0!important}.productGrid--grid .quickCompareButton{font-size:11px!important}}
