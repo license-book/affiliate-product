@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { demoProducts, formatWon, type DemoProduct } from "../lib/demo-products";
 import WishlistButton from "./WishlistButton";
+import {trackRankEvent} from "../lib/ranking";
 
 function ProductArt({ tone, imageUrl, name="" }: { tone: string; imageUrl?: string; name?: string }) {
   return <div className={`productArt ${tone}`}>{imageUrl?<img src={imageUrl} alt={name} loading="lazy" referrerPolicy="no-referrer"/>:<span />}</div>;
@@ -35,7 +36,7 @@ export default function ProductFeed({ limit = 8, variant = "grid", products = de
     <div className={`productGrid productGrid--${variant}`}>
       {products.slice(0, limit).map((product) => <article className="productCard" key={product.slug}>
         <WishlistButton product={product} />
-        <Link href={`/product/${product.slug}`} className="productCardMain">
+        <Link href={`/product/${product.slug}`} className="productCardMain" onClick={()=>trackRankEvent(product.slug,product.category,"view")}>
           <ProductArt tone={product.tone}/>
           <div className="productCardBody">
             <span className="productCategory">{product.category}</span>
@@ -51,7 +52,7 @@ export default function ProductFeed({ limit = 8, variant = "grid", products = de
             <span className="sellerCount">{product.sellers.length}개 판매처 가격비교 →</span>
           </div>
         </Link>
-        <button className="quickCompareButton" type="button" onClick={() => setSelected(product)}>빠른 가격비교</button>
+        <button className="quickCompareButton" type="button" onClick={() => {trackRankEvent(product.slug,product.category,"compare");setSelected(product)}}>빠른 가격비교</button>
       </article>)}
     </div>
     {selected && <QuickCompare product={selected} onClose={() => setSelected(null)}/>} 
