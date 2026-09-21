@@ -1,0 +1,5 @@
+import Link from "next/link";
+import SiteHeader from "../../../components/SiteHeader";
+import ProductFeed from "../../../components/ProductFeed";
+import {searchAdpick} from "../../../lib/adpick-api";
+export default async function SubcategoryPage({params}:{params:Promise<{group:string;subcategory:string}>}){const p=await params;const group=decodeURIComponent(p.group);const subcategory=decodeURIComponent(p.subcategory);const products=await searchAdpick(subcategory,20);return <main className="subcategoryPage"><SiteHeader/><section className="rankHero"><small>{group}</small><h1>{subcategory}</h1><p>{group} &gt; {subcategory}</p></section>{products.length?<section className="feedSection"><ProductFeed products={products} limit={20} variant="list"/></section>:<section className="rankPending"><strong>상품을 불러오지 못했습니다.</strong><p>API 연결 상태를 확인하거나 잠시 후 다시 확인해주세요.</p></section>}<div style={{padding:"20px 18px 110px"}}><Link href={`/category?group=${encodeURIComponent(group)}`}>‹ {group} 카테고리로 돌아가기</Link></div></main>}
