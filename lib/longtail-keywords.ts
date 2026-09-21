@@ -1,0 +1,7 @@
+export type LongtailKeyword={label:string;group:"price"|"space"|"gift"|"digital"|"travel"|"pet"|"living"|"season"};
+export const longtailKeywords:LongtailKeyword[]=[
+{label:"소음 적은 원룸용 청소기",group:"space"},{label:"5만원 이하 부모님 선물",group:"gift"},{label:"책상 좁아도 쓰기 좋은 모니터",group:"digital"},{label:"설치 필요 없는 소형 식기세척기",group:"space"},{label:"차박할 때 전기 없이 쓰는 용품",group:"travel"},{label:"반려견 털 청소하기 좋은 청소기",group:"pet"},{label:"기내 반입 가능한 여행용품",group:"travel"},{label:"10만원대 가성비 태블릿",group:"digital"},
+{label:"3만원 이하 집들이 선물",group:"gift"},{label:"1만원 이하 실용적인 선물",group:"price"},{label:"좁은 원룸에 놓기 좋은 가전",group:"space"},{label:"수납공간 적은 집 정리용품",group:"space"},{label:"재택근무 책상 공간 줄이는 제품",group:"digital"},{label:"노트북과 같이 쓰기 좋은 휴대용 모니터",group:"digital"},{label:"충전 오래가는 무선 이어폰",group:"digital"},{label:"출퇴근용 가벼운 보조배터리",group:"digital"},
+{label:"장거리 운전에 편한 차량용품",group:"travel"},{label:"캠핑 초보가 먼저 사는 용품",group:"travel"},{label:"여행가방 부피 줄이는 정리용품",group:"travel"},{label:"비행기에서 쓰기 좋은 목베개",group:"travel"},{label:"고양이 털 청소하기 좋은 제품",group:"pet"},{label:"반려동물 냄새 줄이는 생활용품",group:"pet"},{label:"설거지 줄여주는 주방용품",group:"living"},{label:"전자레인지로 간단히 쓰는 조리도구",group:"living"},
+{label:"욕실 공간 적게 차지하는 수납용품",group:"space"},{label:"전선 정리하기 좋은 데스크용품",group:"living"},{label:"여름 전기료 부담 적은 냉방용품",group:"season"},{label:"겨울 원룸에서 쓰기 좋은 난방용품",group:"season"},{label:"장마철 빨래 말리기 좋은 제품",group:"season"},{label:"미세먼지 많은 날 필요한 생활가전",group:"season"}
+];
