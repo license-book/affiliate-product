@@ -42,6 +42,12 @@ export default function ProductFeed({ limit = 8, variant = "grid" }: { limit?: n
             <h3>{product.name}</h3>
             <p className="productModel">{product.model}</p>
             <strong className="productPrice">{formatWon(product.price)}부터</strong>
+            {product.badges && <div className="productBadges">
+              {product.badges.lowestPrice && <span className="badgeLowest">최저가</span>}
+              {product.badges.priceDrop != null && product.badges.priceDrop > 0 && <span className="badgeDrop">가격하락 {formatWon(product.badges.priceDrop)}</span>}
+              {product.badges.couponPrice != null && <span className="badgeCoupon">쿠폰가 {formatWon(product.badges.couponPrice)}</span>}
+              {product.badges.freeShipping && <span className="badgeShipping">무료배송</span>}
+            </div>}
             <span className="sellerCount">{product.sellers.length}개 판매처 가격비교 →</span>
           </div>
         </Link>
