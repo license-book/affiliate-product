@@ -111,3 +111,6 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .homePurposeRail a strong{font-size:11px!important;word-break:keep-all}
 .homePurposeRail a span{font-size:15px!important}
 @media(max-width:370px){.homePurposeRail{gap:6px!important}.homePurposeRail a{padding:10px 7px!important}.homePurposeRail a strong{font-size:10px!important}}
+
+/* Long-tail discovery: search-like condition tags, visually distinct from purpose cards */
+.homeLongtailTags{display:flex;flex-wrap:wrap;gap:8px}.homeLongtailTags a{max-width:100%;min-height:38px;padding:8px 12px;border:1px solid #e4e4e6;border-radius:999px;background:#fff;display:flex;align-items:center;gap:7px;color:#333;font-size:11px;font-weight:700;line-height:1.35}.homeLongtailTags a:nth-child(3n+1){background:#f7f7f8}.homeLongtailTags svg{flex:0 0 15px;width:15px;height:15px;fill:none;stroke:#777;stroke-width:1.7;stroke-linecap:round}.homeLongtailTags span{word-break:keep-all}
