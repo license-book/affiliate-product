@@ -135,3 +135,13 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .productGrid--grid .quickCompareButton{position:relative!important;display:block!important;width:calc(100% - 4px)!important;margin:10px 2px 0!important;min-height:36px!important;height:36px!important;overflow:visible!important;visibility:visible!important}
 .productGrid--grid{align-items:start!important;row-gap:22px!important;overflow:visible!important}
 @media(max-width:480px){.productGrid--grid .productCard{margin-bottom:0!important}.productGrid--grid .quickCompareButton{font-size:11px!important}}
+
+/* Hero typography: preserve space for CTA and pagination */
+.heroSlide{min-height:330px!important}
+.heroContent{top:36px!important;bottom:auto!important;padding:0 22px!important}
+.heroContent>span{font-size:10px!important;line-height:1!important}
+.heroContent h1{margin:27px 0 12px!important;font-size:27px!important;line-height:1.08!important;letter-spacing:-.055em!important;max-width:290px!important}
+.heroContent p{margin:0 0 20px!important;font-size:11px!important;line-height:1.45!important;max-width:285px!important}
+.heroContent a{padding:11px 16px!important;font-size:11px!important;line-height:1!important}
+.heroDots{bottom:13px!important}
+@media(max-width:390px){.heroSlide{min-height:318px!important}.heroContent{top:33px!important;padding:0 20px!important}.heroContent h1{margin-top:24px!important;font-size:25px!important}.heroContent p{margin-bottom:17px!important;font-size:10.5px!important}.heroContent a{padding:10px 14px!important}}
