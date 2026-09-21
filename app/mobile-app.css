@@ -117,3 +117,11 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 
 /* SEO long-tail landing */
 .pickHero{padding:34px 18px 26px;border-bottom:1px solid #eee}.pickHero small{font-size:9px;font-weight:900;letter-spacing:.14em;color:#777}.pickHero h1{margin:9px 0 10px;font-size:26px;line-height:1.25;letter-spacing:-.05em}.pickHero p,.pickGuide p{margin:0;font-size:12px;line-height:1.7;color:#666}.pickGuide{padding:22px 18px;background:#f7f7f8}.pickGuide h2,.pickRelated h2{margin:0 0 8px;font-size:16px}.pickRelated{padding:24px 18px 110px;border-top:8px solid #f6f6f6}
+
+/* Purpose recommendations: match top category icon language */
+.homePurposeRail{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px 10px!important}
+.homePurposeRail a{min-height:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;text-align:center!important}
+.homePurposeRail a i{width:54px!important;height:54px!important;border:0!important;border-radius:15px!important;background:#f5f5f6!important;display:grid!important;place-items:center!important;margin:0 auto 7px!important}
+.homePurposeRail a i svg{width:25px!important;height:25px!important;stroke:#333!important;stroke-width:1.35!important}
+.homePurposeRail a strong{width:100%;font-size:11px!important;line-height:1.25!important;font-weight:800!important;text-align:center!important;word-break:keep-all!important}
+@media(max-width:370px){.homePurposeRail{gap:11px 7px!important}.homePurposeRail a i{width:50px!important;height:50px!important}.homePurposeRail a strong{font-size:10px!important}}
