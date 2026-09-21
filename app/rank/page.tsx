@@ -1,0 +1,4 @@
+import Link from "next/link";
+import SiteHeader from "../../components/SiteHeader";
+const cats=["전체","디지털","가전","생활","주방","패션","뷰티","캠핑·레저","육아"];
+export default function RankPage(){return <main className="rankPage"><SiteHeader/><section className="rankHero"><small>9HO RANKING</small><h1>카테고리 인기 랭킹</h1><p>9HO에서 발생한 상품 조회·찜·가격비교·판매처 이동 데이터를 바탕으로 집계할 예정입니다.</p></section><nav className="rankCats">{cats.map(x=><Link key={x} href={x==="전체"?"/rank":`/rank?category=${encodeURIComponent(x)}`}>{x}</Link>)}</nav><section className="rankPending"><strong>랭킹 데이터를 수집하고 있습니다.</strong><p>충분한 이용 데이터가 쌓이면 최근 7일 기준 TOP 100과 급상승 상품을 이곳에 표시합니다.</p><div><span>조회</span><span>찜</span><span>가격비교</span><span>판매처 이동</span></div></section><section className="rankPolicy"><h2>9HO 인기 랭킹 기준</h2><p>판매량 순위가 아닌 9HO 서비스 내부 이용 데이터를 기반으로 하는 자체 인기 지표입니다. 초기 데이터가 충분하지 않은 동안에는 순위를 임의로 표시하지 않습니다.</p></section></main>}
