@@ -49,3 +49,6 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .athlerHome .feedSection .productGrid--list .quickCompareButton{display:none!important}
 .athlerHome .feedSection .productGrid--list .wishlistButton{position:absolute!important;right:4px!important;top:39px!important;z-index:3}
 @media(max-width:390px){.athlerHome .feedSection .productGrid--list .productCardMain{grid-template-columns:82px minmax(0,1fr)}.athlerHome .feedSection .productGrid--list .productArt{width:82px!important;height:96px!important}}
+
+/* Show comparison-store count in compact list */
+.athlerHome .feedSection .productGrid--list .sellerCount{display:block!important;margin-top:5px;font-size:11px!important;color:#8a8a8a!important;font-weight:600}
