@@ -4,7 +4,7 @@ export type DemoProduct = {
   name: string;
   model: string;
   price: number;
-  sellers: { name: string; price: number }[];
+  sellers: { name: string; price: number; url?: string }[];
   tone: string;
   badges?: { freeShipping?: boolean; lowestPrice?: boolean; priceDrop?: number; couponPrice?: number };
   detailType?: "compare" | "single" | "similar";
@@ -20,6 +20,7 @@ export type DemoProduct = {
   shippingFee?: number;
   optionText?: string;
   detailImages?: string[];
+  imageUrl?: string;
 };
 
 export const demoProducts: DemoProduct[] = [
