@@ -3,7 +3,7 @@ import SiteHeader from "../components/SiteHeader";
 import ProductFeed from "../components/ProductFeed";
 import RecentlyViewed from "../components/RecentlyViewed";
 import LongtailDiscovery from "../components/LongtailDiscovery";
-const categories=["홈","전체","디지털","가전","생활","주방","패션","뷰티"];
+const categories=["홈","디지털","가전","생활","주방","패션","뷰티"];
 const categoryIcons:Record<string,React.ReactNode>={홈:<svg viewBox="0 0 24 24"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5V21h13V9.5M9.5 21v-6h5v6"/></svg>,전체:<svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>,디지털:<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>,가전:<svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 7h1M12 7h4"/></svg>,생활:<svg viewBox="0 0 24 24"><path d="M7 10h10l1 11H6l1-11ZM9 10V7a3 3 0 0 1 6 0v3"/></svg>,주방:<svg viewBox="0 0 24 24"><path d="M7 3v7M4 3v5a3 3 0 0 0 6 0V3M7 10v11M16 3v18M16 3c3 2 4 5 4 8h-4"/></svg>,패션:<svg viewBox="0 0 24 24"><path d="m8 4 4 3 4-3 5 5-3 3v9H6v-9L3 9l5-5Z"/></svg>,뷰티:<svg viewBox="0 0 24 24"><path d="M9 3h6v5l2 3v10H7V11l2-3V3ZM9 8h6"/></svg>};
 
 const purposeIcons:Record<string,React.ReactNode>={
