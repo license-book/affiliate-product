@@ -7,6 +7,9 @@ export type DemoProduct = {
   sellers: { name: string; price: number }[];
   tone: string;
   badges?: { freeShipping?: boolean; lowestPrice?: boolean; priceDrop?: number; couponPrice?: number };
+  detailType?: "compare" | "single" | "similar";
+  sameProductMatched?: boolean;
+  affiliateUrl?: string;
 };
 
 export const demoProducts: DemoProduct[] = [
