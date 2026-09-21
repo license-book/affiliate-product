@@ -99,3 +99,6 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 
 /* Purpose recommendation semantic line icons */
 .homePurposeRail a i{width:34px;height:34px;display:grid;place-items:center;font-style:normal}.homePurposeRail a i svg{width:30px;height:30px;fill:none;stroke:#222;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}.homePurposeRail a strong{font-size:12px;line-height:1.3}.homePurposeRail a span{margin-top:auto}
+
+/* Wishlist: compact spacing below global header */
+.wishlistHero{padding-top:28px!important;margin-top:0!important;min-height:0!important}.wishlistHero .searchPageInner{padding-top:0!important;margin-top:0!important}
