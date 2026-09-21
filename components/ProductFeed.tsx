@@ -29,10 +29,10 @@ function QuickCompare({ product, onClose }: { product: DemoProduct; onClose: () 
   </div>;
 }
 
-export default function ProductFeed({ limit = 8 }: { limit?: number }) {
+export default function ProductFeed({ limit = 8, variant = "grid" }: { limit?: number; variant?: "grid"|"list"|"rail" }) {
   const [selected, setSelected] = useState<DemoProduct | null>(null);
   return <>
-    <div className="productGrid">
+    <div className={`productGrid productGrid--${variant}`}>
       {demoProducts.slice(0, limit).map((product) => <article className="productCard" key={product.slug}>
         <WishlistButton product={product} />
         <Link href={`/product/${product.slug}`} className="productCardMain">
