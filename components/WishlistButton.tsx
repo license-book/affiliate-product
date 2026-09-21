@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { DemoProduct } from "../lib/demo-products";
 import { isWishlisted, toggleWishlist, WISHLIST_EVENT } from "../lib/wishlist";
 import styles from "./WishlistButton.module.css";
+import {trackRankEvent} from "../lib/ranking";
 
 function HeartIcon() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 5.8c-2.1-2.1-5.5-2.1-7.6 0L12 6.8l-1-1c-2.1-2.1-5.5-2.1-7.6 0s-2.1 5.5 0 7.6L12 22l8.6-8.6c2.1-2.1 2.1-5.5 0-7.6Z"/></svg>;
@@ -34,6 +35,7 @@ export default function WishlistButton({ product, variant = "card" }: { product:
       sellerCount: product.sellers.length,
     });
     setActive(next);
+    if(next) trackRankEvent(product.slug,product.category,"wishlist");
   };
 
   const className = `${styles.button} ${variant === "card" ? styles.card : styles.detail} ${active ? styles.active : ""}`;
