@@ -102,3 +102,12 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 
 /* Wishlist: compact spacing below global header */
 .wishlistHero{padding-top:28px!important;margin-top:0!important;min-height:0!important}.wishlistHero .searchPageInner{padding-top:0!important;margin-top:0!important}
+
+/* Purpose recommendations: fixed 2-row grid, no horizontal swipe */
+.homePurposeRail{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;overflow:visible!important;padding-bottom:0!important}
+.homePurposeRail a{width:auto!important;min-width:0!important;min-height:104px!important;flex:none!important;padding:11px 9px!important;border-radius:12px!important}
+.homePurposeRail a i{width:30px!important;height:30px!important}
+.homePurposeRail a i svg{width:27px!important;height:27px!important}
+.homePurposeRail a strong{font-size:11px!important;word-break:keep-all}
+.homePurposeRail a span{font-size:15px!important}
+@media(max-width:370px){.homePurposeRail{gap:6px!important}.homePurposeRail a{padding:10px 7px!important}.homePurposeRail a strong{font-size:10px!important}}
