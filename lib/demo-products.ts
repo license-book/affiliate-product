@@ -6,6 +6,7 @@ export type DemoProduct = {
   price: number;
   sellers: { name: string; price: number }[];
   tone: string;
+  badges?: { freeShipping?: boolean; lowestPrice?: boolean; priceDrop?: number; couponPrice?: number };
 };
 
 export const demoProducts: DemoProduct[] = [
