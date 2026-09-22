@@ -18,7 +18,7 @@ const purposeIcons:Record<string,React.ReactNode>={
 "공부·업무":<svg viewBox="0 0 24 24"><path d="M4 5h16v12H4zM8 21h8M12 17v4M8 9h8M8 12h5"/></svg>,
 "차량용":<svg viewBox="0 0 24 24"><path d="m5 9 2-5h10l2 5 2 3v6h-2v2h-3v-2H8v2H5v-2H3v-6zM6 13h3M15 13h3"/></svg>,
 "취미생활":<svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c2 0 2-3 4-3h2a3 3 0 0 0 3-3c0-7-4-12-9-12Z"/><circle cx="8" cy="9" r="1"/><circle cx="12" cy="7" r="1"/><circle cx="16" cy="10" r="1"/></svg>};
-const slides=[
+const slides:readonly (readonly [string,string,string,string,string,string])[]=[
 ["today","1 / 6","오늘 뭐 살지|고민된다면?","당신의 일상을 더 좋게, 오늘의 추천 상품","/search?q=오늘의추천","/hero/today.svg"],
 ["best","2 / 6","지금, 가장 인기있는|BEST 100","사람들이 많이 보는 상품만 모았어요","/#best","/hero/best.svg"],
 ["under","3 / 6","지금 많이 찾는|상품을 한눈에","요즘 관심이 모이는 상품을 빠르게 둘러보세요","/search?q=인기상품","/hero/under.svg"],
