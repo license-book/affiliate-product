@@ -14,7 +14,7 @@ const sections=[
 
 export default function ThemePage(){
  const jumpRef=useRef<HTMLElement>(null);
- const [active,setActive]=useState(sections[0].id);
+ const [active,setActive]=useState(sections[0].id);\n const [expanded,setExpanded]=useState<Record<string,boolean>>({});
 
  const selectSection=(id:string)=>{
   setActive(id);
@@ -45,6 +45,6 @@ export default function ThemePage(){
  return <main className="themePage">
   <header className="themeHero"><small>THEME DISCOVERY</small><h1>테마로 찾기</h1><p>상품 이름을 몰라도 괜찮아요.<br/>상황과 목적부터 골라보세요.</p></header>
   <nav className="themeJump" ref={jumpRef}>{sections.map(s=><a key={s.id} data-id={s.id} className={active===s.id?"active":""} href={"#"+s.id} onClick={e=>{e.preventDefault();selectSection(s.id)}}>{s.title}</a>)}</nav>
-  {sections.map(s=>{const items=longtailKeywords.filter(x=>(s.groups as readonly string[]).includes(x.group));return <section className="themeSection" id={s.id} key={s.id}><div className="themeSectionHead"><h2>{s.title}</h2><p>{s.desc}</p></div><div className="themeLinkGrid">{items.map(x=><Link href={"/pick/"+x.slug} key={x.slug}><span>{x.label}</span><b>›</b></Link>)}</div></section>})}
+  {sections.map(s=>{const items=longtailKeywords.filter(x=>(s.groups as readonly string[]).includes(x.group));return <section className="themeSection" id={s.id} key={s.id}><div className="themeSectionHead"><h2>{s.title}</h2><p>{s.desc}</p></div><div className="themeLinkGrid">{items.map((x,i)=><Link className={i>=6&&!expanded[s.id]?"themeItemHidden":""} href={"/pick/"+x.slug} key={x.slug}><span>{x.label}</span><b>›</b></Link>)}</div>{items.length>6&&<button className="themeMore" type="button" aria-expanded={!!expanded[s.id]} onClick={()=>setExpanded(v=>({...v,[s.id]:!v[s.id]}))}>{expanded[s.id]?"접기":"더보기"} <span>{expanded[s.id]?"⌃":"⌄"}</span></button>}</section>})}
  </main>
 }
