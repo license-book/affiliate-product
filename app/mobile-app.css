@@ -178,3 +178,7 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 /* Slide-specific hero artwork */
 .athlerHome .heroSlide{background-size:cover;background-position:center;background-repeat:no-repeat;}
 .athlerHome .heroSlide .heroShade{background:linear-gradient(90deg,rgba(20,20,20,.34) 0%,rgba(20,20,20,.14) 48%,rgba(20,20,20,0) 78%);}
+
+/* Theme jump: keep selected category centered */
+.themeJump{scroll-behavior:smooth}
+.themeJump a.active{background:#111;color:#fff}
