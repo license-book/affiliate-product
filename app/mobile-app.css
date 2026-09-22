@@ -174,3 +174,7 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 @media(max-width:390px){
   .athlerHome .categoryIcons{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 2px;padding-left:8px;padding-right:8px}
 }
+
+/* Slide-specific hero artwork */
+.athlerHome .heroSlide{background-size:cover;background-position:center;background-repeat:no-repeat;}
+.athlerHome .heroSlide .heroShade{background:linear-gradient(90deg,rgba(20,20,20,.34) 0%,rgba(20,20,20,.14) 48%,rgba(20,20,20,0) 78%);}
