@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import {useEffect,useRef,useState} from "react";
 import {longtailKeywords} from "../../lib/longtail-keywords";
 
 const sections=[
@@ -11,9 +13,38 @@ const sections=[
 ] as const;
 
 export default function ThemePage(){
+ const jumpRef=useRef<HTMLElement>(null);
+ const [active,setActive]=useState(sections[0].id);
+
+ const selectSection=(id:string)=>{
+  setActive(id);
+  requestAnimationFrame(()=>{
+   document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"});
+   const nav=jumpRef.current;
+   const tab=nav?.querySelector<HTMLAnchorElement>(`a[data-id="${id}"]`);
+   if(nav&&tab){
+    nav.scrollTo({left:tab.offsetLeft-(nav.clientWidth-tab.offsetWidth)/2,behavior:"smooth"});
+   }
+  });
+ };
+
+ useEffect(()=>{
+  const observer=new IntersectionObserver(entries=>{
+   const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+   if(!visible)return;
+   const id=visible.target.id;
+   setActive(id);
+   const nav=jumpRef.current;
+   const tab=nav?.querySelector<HTMLAnchorElement>(`a[data-id="${id}"]`);
+   if(nav&&tab) nav.scrollTo({left:tab.offsetLeft-(nav.clientWidth-tab.offsetWidth)/2,behavior:"smooth"});
+  },{rootMargin:"-100px 0px -55% 0px",threshold:[0,.2,.5]});
+  sections.forEach(s=>{const el=document.getElementById(s.id);if(el)observer.observe(el)});
+  return()=>observer.disconnect();
+ },[]);
+
  return <main className="themePage">
   <header className="themeHero"><small>THEME DISCOVERY</small><h1>테마로 찾기</h1><p>상품 이름을 몰라도 괜찮아요.<br/>상황과 목적부터 골라보세요.</p></header>
-  <nav className="themeJump">{sections.map(s=><a key={s.id} href={"#"+s.id}>{s.title}</a>)}</nav>
+  <nav className="themeJump" ref={jumpRef}>{sections.map(s=><a key={s.id} data-id={s.id} className={active===s.id?"active":""} href={"#"+s.id} onClick={e=>{e.preventDefault();selectSection(s.id)}}>{s.title}</a>)}</nav>
   {sections.map(s=>{const items=longtailKeywords.filter(x=>(s.groups as readonly string[]).includes(x.group));return <section className="themeSection" id={s.id} key={s.id}><div className="themeSectionHead"><h2>{s.title}</h2><p>{s.desc}</p></div><div className="themeLinkGrid">{items.map(x=><Link href={"/pick/"+x.slug} key={x.slug}><span>{x.label}</span><b>›</b></Link>)}</div></section>})}
  </main>
 }
