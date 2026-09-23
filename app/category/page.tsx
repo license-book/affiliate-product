@@ -32,7 +32,7 @@ function CategoryContent(){
  const requested=searchParams.get("group");
  const hasGroup=!!(requested&&Object.prototype.hasOwnProperty.call(groups,requested));
  const initial=(hasGroup?requested:"디지털") as Group;
- const [first,setFirst]=useState<Group>(initial);\n const tabsRef=useRef<HTMLElement>(null);\n useEffect(()=>{if(hasGroup)setFirst(initial)},[requested,hasGroup,initial]);\n useEffect(()=>{if(!hasGroup)return; const el=tabsRef.current?.querySelector(`[data-category="${first}"]`) as HTMLElement|null; if(el&&tabsRef.current){tabsRef.current.scrollTo({left:el.offsetLeft-(tabsRef.current.clientWidth-el.offsetWidth)/2,behavior:"smooth"})}},[first,hasGroup]);
+ const [first,setFirst]=useState<Group>(initial);\n const tabsRef=useRef<HTMLElement>(null);\n const subTabsRef=useRef<HTMLDivElement>(null);\n useEffect(()=>{if(hasGroup)setFirst(initial)},[requested,hasGroup,initial]);\n useEffect(()=>{if(!hasGroup)return; const el=tabsRef.current?.querySelector(`[data-category="${first}"]`) as HTMLElement|null; if(el&&tabsRef.current){tabsRef.current.scrollTo({left:el.offsetLeft-(tabsRef.current.clientWidth-el.offsetWidth)/2,behavior:"smooth"})}},[first,hasGroup]);
  const digital=["노트북","스마트폰","디지털"];
  const appliance=["생활가전","TV·가전"];
  const categoryProducts=demoProducts.filter(p=>first==="디지털"?digital.includes(p.category):first==="가전"?appliance.includes(p.category):p.category===first);
@@ -47,7 +47,7 @@ function CategoryContent(){
  return <main className="categoryMenuPage categoryLandingPage">
   <header className="categoryMenuHeader">{first}</header>
   <nav ref={tabsRef} className="categoryFirstTabs">{(Object.keys(groups) as Group[]).map(x=><Link key={x} className={first===x?"active":""} data-category={x} href={`/category?group=${encodeURIComponent(x)}`}>{x}</Link>)}</nav>
-  <section className="categoryTextSub"><div className="categoryTextSubGrid">{groups[first].map(x=><Link key={x} href={`/category/${encodeURIComponent(first)}/${encodeURIComponent(x)}`}>{x}</Link>)}</div></section>
+  <section className="categoryTextSub"><div ref={subTabsRef} className="categoryTextSubGrid">{groups[first].map(x=><Link key={x} href={`/category/${encodeURIComponent(first)}/${encodeURIComponent(x)}`} onClick={(e)=>{const el=e.currentTarget; const rail=subTabsRef.current; if(rail)rail.scrollTo({left:el.offsetLeft-(rail.clientWidth-el.offsetWidth)/2,behavior:"smooth"})}}>{x}</Link>)}</div></section>
   <section className="categoryProductSection"><div className="categoryProductHead"><div><h1>{first} 상품</h1><p>{first} 카테고리의 상품을 한눈에 비교해보세요.</p></div><span>{categoryProducts.length}개 상품</span></div>{categoryProducts.length>0?<ProductFeed products={categoryProducts} limit={categoryProducts.length} variant="list"/>:<div className="categoryEmptyProducts"><strong>{first} 상품 준비 중</strong><p>실제 상품 API 연결 후 이 영역에 {first} 상품이 자동으로 표시됩니다.</p></div>}</section>
  </main>
 }
