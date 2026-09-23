@@ -14,7 +14,7 @@ const sections=[
 
 export default function ThemePage(){
  const jumpRef=useRef<HTMLElement>(null);
- const [active,setActive]=useState(sections[0].id);
+ const [active,setActive]=useState<string>(sections[0].id);
  const [expanded,setExpanded]=useState<Record<string,boolean>>({});
 
  const centerTab=(id:string)=>{
