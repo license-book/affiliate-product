@@ -17,3 +17,7 @@
 .categoryTextSubGrid a:hover{background:#fafafa!important}
 @media(max-width:760px){.categoryTextSubGrid a:nth-child(4n)::after{display:none}.categoryTextSubGrid a:nth-child(n+5){border-top:1px solid #eef0f3!important}}
 @media(min-width:761px){.categoryTextSubGrid a:nth-child(8n)::after{display:none}}
+
+/* Remove outer horizontal rules from text-only subcategory menu */
+.categoryTextSubGrid{border-top:0!important;border-bottom:0!important}
+@media(max-width:760px){.categoryTextSubGrid a:nth-child(n+5){border-top:0!important}}
