@@ -2,6 +2,8 @@
 import Link from "next/link";
 import {Suspense,useState} from "react";
 import {useSearchParams} from "next/navigation";
+import ProductFeed from "../../components/ProductFeed";
+import {demoProducts} from "../../lib/demo-products";
 
 const groups={
 "디지털":["노트북·PC","스마트폰","태블릿","모니터","이어폰·헤드폰","스마트워치","키보드·마우스","저장장치"],
@@ -25,5 +27,23 @@ const paths:Record<string,string>={
 const discovery=["5천원 이하","1만원 이하","가성비","가격하락","무료배송","쿠폰 상품","오늘의 발견","랜덤 상품"];
 const longtails=["자취생 필수템","신혼·이사 준비","대학생 새학기","홈오피스 꾸미기","부모님 선물","캠핑·차박 준비","여행 준비물","반려동물 필수품"];
 const Icon=({name}:{name:string})=><svg viewBox="0 0 24 24"><path d={paths[name]||"M5 5h14v14H5z"}/></svg>;
-function CategoryContent(){const searchParams=useSearchParams();const requested=searchParams.get("group");const initial=(requested&&Object.prototype.hasOwnProperty.call(groups,requested)?requested:"디지털") as Group;const[first,setFirst]=useState<Group>(initial);return <main className="categoryMenuPage"><header className="categoryMenuHeader">카테고리</header><Link className="categoryThemeEntry" href="/theme"><span><b>🔥 테마로 찾기</b><small>계절 · 기념일 · 선물 · 연령 · 취미 · 상황별</small></span><strong>›</strong></Link><div className="categoryMenuBody"><nav className="categoryMenuLeft">{(Object.keys(groups) as Group[]).map(x=><button key={x} className={first===x?"active":""} onClick={()=>setFirst(x)}>{x}</button>)}</nav><section className="categoryMenuRight"><div className="categoryMenuCrumb"><b>{first}</b><span>›</span></div><div className="categoryMenuGrid">{groups[first].map(x=><Link key={x} href={`/category/${encodeURIComponent(first)}/${encodeURIComponent(x)}`}><span className="categoryMenuIcon"><Icon name={x}/></span><strong>{x}</strong></Link>)}</div></section></div><section className="categoryDiscovery"><div className="categoryDiscoveryHead"><h2>가격으로 골라보기</h2><span>빠른 탐색</span></div><div className="categoryDiscoveryChips">{discovery.map(x=><Link key={x} href={`/search?q=${encodeURIComponent(x)}`}>{x}</Link>)}</div><div className="categoryDiscoveryHead long"><h2>이렇게도 찾아보세요</h2><span>추천 검색</span></div><div className="categoryLongtailGrid">{longtails.map(x=><Link key={x} href={`/search?q=${encodeURIComponent(x)}`}>{x}<span>›</span></Link>)}</div></section></main>}
+function CategoryContent(){
+ const searchParams=useSearchParams();
+ const requested=searchParams.get("group");
+ const initial=(requested&&Object.prototype.hasOwnProperty.call(groups,requested)?requested:"디지털") as Group;
+ const [first,setFirst]=useState<Group>(initial);
+ const digital=["노트북","스마트폰","디지털"];
+ const appliance=["생활가전","TV·가전"];
+ const categoryProducts=demoProducts.filter(p=>first==="디지털"?digital.includes(p.category):first==="가전"?appliance.includes(p.category):p.category===first);
+ return <main className="categoryMenuPage">
+  <header className="categoryMenuHeader">{first}</header>
+  <nav className="categoryFirstTabs">{(Object.keys(groups) as Group[]).map(x=><button key={x} className={first===x?"active":""} onClick={()=>setFirst(x)}>{x}</button>)}</nav>
+  <section className="categoryProductSection">
+   <div className="categoryProductHead"><div><h1>{first} 상품</h1><p>{first} 카테고리의 상품을 한눈에 비교해보세요.</p></div><span>{categoryProducts.length}개 상품</span></div>
+   {categoryProducts.length>0?<ProductFeed products={categoryProducts} limit={categoryProducts.length} variant="list"/>:<div className="categoryEmptyProducts"><strong>{first} 상품 준비 중</strong><p>실제 상품 API 연결 후 이 영역에 {first} 상품이 자동으로 표시됩니다.</p></div>}
+  </section>
+  <section className="categorySubSection"><div className="categoryDiscoveryHead"><h2>{first} 세부 카테고리</h2><span>분류 선택</span></div><div className="categoryMenuGrid">{groups[first].map(x=><Link key={x} href={`/category/${encodeURIComponent(first)}/${encodeURIComponent(x)}`}><span className="categoryMenuIcon"><Icon name={x}/></span><strong>{x}</strong></Link>)}</div></section>
+  <Link className="categoryThemeEntry" href="/theme"><span><b>🔥 테마로 찾기</b><small>계절 · 기념일 · 선물 · 연령 · 취미 · 상황별</small></span><strong>›</strong></Link>
+ </main>
+}
 export default function CategoryPage(){return <Suspense fallback={<main className="categoryMenuPage"><header className="categoryMenuHeader">카테고리</header></main>}><CategoryContent/></Suspense>}
