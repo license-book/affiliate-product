@@ -191,3 +191,8 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 /* Hero artwork: inline slide images must render above legacy gradient placeholders */
 .athlerHome .heroSlide:before{display:none!important;content:none!important}
 .athlerHome .heroSlide{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+
+/* Recent section anchor: keep title clear of sticky header when opened from bottom nav */
+#recent{scroll-margin-top:64px}
+#recent .homeRecent{padding-top:28px}
+#recent .recentHead{padding-top:4px}
