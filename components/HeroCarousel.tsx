@@ -13,7 +13,7 @@ export default function HeroCarousel({slides}:{slides:readonly Slide[]}){
    setActive(current=>{
     const next=(current+1)%slides.length;
     const target=el.children[next] as HTMLElement|undefined;
-    target?.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
+    if(target) el.scrollTo({left:target.offsetLeft,behavior:"smooth"});
     return next;
    });
   },4000);
