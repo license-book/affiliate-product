@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import SiteHeader from "../../components/SiteHeader";
 import {Suspense,useEffect,useRef,useState} from "react";
 import {useSearchParams} from "next/navigation";
 import ProductFeed from "../../components/ProductFeed";
@@ -49,6 +50,7 @@ function CategoryContent(){
  </main>;
 
  return <main className="categoryMenuPage categoryLandingPage">
+  <SiteHeader/>
   <header className="categoryMenuHeader">{first}</header>
   <nav ref={tabsRef} className="categoryFirstTabs">{(Object.keys(groups) as Group[]).map(x=><Link key={x} className={first===x?"active":""} data-category={x} href={`/category?group=${encodeURIComponent(x)}`}>{x}</Link>)}</nav>
   <section className="categoryTextSub"><div ref={subTabsRef} className="categoryTextSubGrid">{groups[first].map(x=><Link key={x} href={`/category/${encodeURIComponent(first)}/${encodeURIComponent(x)}`} onClick={(e)=>{const el=e.currentTarget; const rail=subTabsRef.current; if(rail)rail.scrollTo({left:el.offsetLeft-(rail.clientWidth-el.offsetWidth)/2,behavior:"smooth"})}}>{x}</Link>)}</div></section>
