@@ -21,3 +21,6 @@
 /* Remove outer horizontal rules from text-only subcategory menu */
 .categoryTextSubGrid{border-top:0!important;border-bottom:0!important}
 @media(max-width:760px){.categoryTextSubGrid a:nth-child(n+5){border-top:0!important}}
+
+/* Keep 1st/2nd category navigation on subcategory result pages */
+.subcategoryNavShell{padding-top:64px;background:#fff;border-bottom:1px solid #f0f1f3}.subcategoryFirstTabs{max-width:1180px;margin:0 auto}.subcategoryTextNav{max-width:1180px;margin:0 auto;padding:12px 20px 16px;display:grid;grid-template-columns:repeat(8,minmax(0,1fr))}.subcategoryTextNav a{position:relative;display:flex;align-items:center;justify-content:center;min-height:38px;padding:6px 4px;font-size:13px;font-weight:750;color:#5f6672;text-align:center;word-break:keep-all}.subcategoryTextNav a:not(:last-child)::after{content:"";position:absolute;right:0;top:28%;height:44%;width:1px;background:#e7e9ee}.subcategoryTextNav a.active{color:#111;font-weight:900}.subcategoryTextNav a.active::before{content:"";position:absolute;left:28%;right:28%;bottom:0;height:2px;background:#111}@media(max-width:760px){.subcategoryNavShell{padding-top:54px}.subcategoryTextNav{grid-template-columns:repeat(4,minmax(0,1fr));padding:10px 16px 14px}.subcategoryTextNav a{font-size:12px}.subcategoryTextNav a:nth-child(4n)::after{display:none}}
