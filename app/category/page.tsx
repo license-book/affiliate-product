@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import {Suspense,useState} from "react";
+import {Suspense,useEffect,useState} from "react";
 import {useSearchParams} from "next/navigation";
 import ProductFeed from "../../components/ProductFeed";
 import {demoProducts} from "../../lib/demo-products";
@@ -32,7 +32,7 @@ function CategoryContent(){
  const requested=searchParams.get("group");
  const hasGroup=!!(requested&&Object.prototype.hasOwnProperty.call(groups,requested));
  const initial=(hasGroup?requested:"디지털") as Group;
- const [first,setFirst]=useState<Group>(initial);
+ const [first,setFirst]=useState<Group>(initial);\n useEffect(()=>{if(hasGroup)setFirst(initial)},[requested,hasGroup,initial]);
  const digital=["노트북","스마트폰","디지털"];
  const appliance=["생활가전","TV·가전"];
  const categoryProducts=demoProducts.filter(p=>first==="디지털"?digital.includes(p.category):first==="가전"?appliance.includes(p.category):p.category===first);
