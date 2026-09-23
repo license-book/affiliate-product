@@ -14,18 +14,24 @@ const sections=[
 
 export default function ThemePage(){
  const jumpRef=useRef<HTMLElement>(null);
- const [active,setActive]=useState(sections[0].id);\n const [expanded,setExpanded]=useState<Record<string,boolean>>({});
+ const [active,setActive]=useState(sections[0].id);
+ const [expanded,setExpanded]=useState<Record<string,boolean>>({});
+
+ const centerTab=(id:string)=>{
+  const nav=jumpRef.current;
+  const tab=nav?.querySelector<HTMLButtonElement>(`button[data-id="${id}"]`);
+  if(nav&&tab) nav.scrollTo({left:tab.offsetLeft-(nav.clientWidth-tab.offsetWidth)/2,behavior:"smooth"});
+ };
 
  const selectSection=(id:string)=>{
   setActive(id);
-  requestAnimationFrame(()=>{
-   document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"});
-   const nav=jumpRef.current;
-   const tab=nav?.querySelector<HTMLAnchorElement>(`a[data-id="${id}"]`);
-   if(nav&&tab){
-    nav.scrollTo({left:tab.offsetLeft-(nav.clientWidth-tab.offsetWidth)/2,behavior:"smooth"});
-   }
-  });
+  centerTab(id);
+  const el=document.getElementById(id);
+  if(el){
+   const headerOffset=132;
+   const y=el.getBoundingClientRect().top+window.scrollY-headerOffset;
+   window.scrollTo({top:y,behavior:"smooth"});
+  }
  };
 
  useEffect(()=>{
@@ -34,17 +40,22 @@ export default function ThemePage(){
    if(!visible)return;
    const id=visible.target.id;
    setActive(id);
-   const nav=jumpRef.current;
-   const tab=nav?.querySelector<HTMLAnchorElement>(`a[data-id="${id}"]`);
-   if(nav&&tab) nav.scrollTo({left:tab.offsetLeft-(nav.clientWidth-tab.offsetWidth)/2,behavior:"smooth"});
-  },{rootMargin:"-100px 0px -55% 0px",threshold:[0,.2,.5]});
+   centerTab(id);
+  },{rootMargin:"-132px 0px -55% 0px",threshold:[0,.2,.5]});
   sections.forEach(s=>{const el=document.getElementById(s.id);if(el)observer.observe(el)});
   return()=>observer.disconnect();
  },[]);
 
  return <main className="themePage">
   <header className="themeHero"><small>THEME DISCOVERY</small><h1>테마로 찾기</h1><p>상품 이름을 몰라도 괜찮아요.<br/>상황과 목적부터 골라보세요.</p></header>
-  <nav className="themeJump" ref={jumpRef}>{sections.map(s=><a key={s.id} data-id={s.id} className={active===s.id?"active":""} href={"#"+s.id} onClick={e=>{e.preventDefault();selectSection(s.id)}}>{s.title}</a>)}</nav>
-  {sections.map(s=>{const items=longtailKeywords.filter(x=>(s.groups as readonly string[]).includes(x.group));return <section className="themeSection" id={s.id} key={s.id}><div className="themeSectionHead"><h2>{s.title}</h2><p>{s.desc}</p></div><div className="themeLinkGrid">{items.map((x,i)=><Link className={i>=6&&!expanded[s.id]?"themeItemHidden":""} href={"/pick/"+x.slug} key={x.slug}><span>{x.label}</span><b>›</b></Link>)}</div>{items.length>6&&<button className="themeMore" type="button" aria-expanded={!!expanded[s.id]} onClick={()=>setExpanded(v=>({...v,[s.id]:!v[s.id]}))}>{expanded[s.id]?"접기":"더보기"} <span>{expanded[s.id]?"⌃":"⌄"}</span></button>}</section>})}
+  <nav className="themeJump" ref={jumpRef} aria-label="테마 카테고리">{sections.map(s=><button type="button" key={s.id} data-id={s.id} className={active===s.id?"active":""} onClick={()=>selectSection(s.id)}>{s.title}</button>)}</nav>
+  {sections.map(s=>{
+   const items=longtailKeywords.filter(x=>(s.groups as readonly string[]).includes(x.group));
+   return <section className="themeSection" id={s.id} key={s.id}>
+    <div className="themeSectionHead"><h2>{s.title}</h2><p>{s.desc}</p></div>
+    <div className="themeLinkGrid">{items.map((x,i)=><Link className={i>=6&&!expanded[s.id]?"themeItemHidden":""} href={"/pick/"+x.slug} key={x.slug}><span>{x.label}</span><b>›</b></Link>)}</div>
+    {items.length>6&&<button className="themeMore" type="button" aria-expanded={!!expanded[s.id]} onClick={()=>setExpanded(v=>({...v,[s.id]:!v[s.id]}))}>{expanded[s.id]?"접기":"더보기"} <span>{expanded[s.id]?"⌃":"⌄"}</span></button>}
+   </section>
+  })}
  </main>
 }
