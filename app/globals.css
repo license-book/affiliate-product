@@ -30,3 +30,7 @@
 
 /* Category hierarchy order: site header > selected group > first row > second row */
 .categoryLandingPage>.categoryMenuHeader{margin-top:64px}.subcategoryPage>.subcategorySelectedTitle{margin-top:64px}.subcategoryPage .subcategoryNavShell{padding-top:0!important}.subcategoryFirstTabs{border-bottom:1px solid #f0f1f3}.subcategoryTextNav{border-bottom:1px solid #f0f1f3}@media(max-width:760px){.categoryLandingPage>.categoryMenuHeader{margin-top:54px}.subcategoryPage>.subcategorySelectedTitle{margin-top:54px}}
+
+/* Tighten site header -> selected category spacing */
+.categoryLandingPage>.categoryMenuHeader,.subcategoryPage>.subcategorySelectedTitle{margin-top:0!important}
+.categoryLandingPage>.categoryMenuHeader,.subcategorySelectedTitle{min-height:52px!important;padding-top:12px!important;padding-bottom:12px!important}
