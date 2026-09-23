@@ -32,7 +32,11 @@ function CategoryContent(){
  const requested=searchParams.get("group");
  const hasGroup=!!(requested&&Object.prototype.hasOwnProperty.call(groups,requested));
  const initial=(hasGroup?requested:"디지털") as Group;
- const [first,setFirst]=useState<Group>(initial);\n const tabsRef=useRef<HTMLElement>(null);\n const subTabsRef=useRef<HTMLDivElement>(null);\n useEffect(()=>{if(hasGroup)setFirst(initial)},[requested,hasGroup,initial]);\n useEffect(()=>{if(!hasGroup)return; const el=tabsRef.current?.querySelector(`[data-category="${first}"]`) as HTMLElement|null; if(el&&tabsRef.current){tabsRef.current.scrollTo({left:el.offsetLeft-(tabsRef.current.clientWidth-el.offsetWidth)/2,behavior:"smooth"})}},[first,hasGroup]);
+ const [first,setFirst]=useState<Group>(initial);
+ const tabsRef=useRef<HTMLElement>(null);
+ const subTabsRef=useRef<HTMLDivElement>(null);
+ useEffect(()=>{if(hasGroup)setFirst(initial)},[requested,hasGroup,initial]);
+ useEffect(()=>{if(!hasGroup)return; const el=tabsRef.current?.querySelector(`[data-category="${first}"]`) as HTMLElement|null; if(el&&tabsRef.current){tabsRef.current.scrollTo({left:el.offsetLeft-(tabsRef.current.clientWidth-el.offsetWidth)/2,behavior:"smooth"})}},[first,hasGroup]);
  const digital=["노트북","스마트폰","디지털"];
  const appliance=["생활가전","TV·가전"];
  const categoryProducts=demoProducts.filter(p=>first==="디지털"?digital.includes(p.category):first==="가전"?appliance.includes(p.category):p.category===first);
