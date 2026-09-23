@@ -187,3 +187,7 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .themeItemHidden{display:none!important}
 .themeMore{width:100%;height:44px;margin:12px 0 4px;border:1px solid #e5e5e5;border-radius:12px;background:#fff;color:#555;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer}
 .themeMore span{font-size:15px;color:#999}
+
+/* Hero artwork: inline slide images must render above legacy gradient placeholders */
+.athlerHome .heroSlide:before{display:none!important;content:none!important}
+.athlerHome .heroSlide{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
