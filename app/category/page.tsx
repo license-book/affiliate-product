@@ -38,11 +38,11 @@ function CategoryContent(){
  return <main className="categoryMenuPage">
   <header className="categoryMenuHeader">{first}</header>
   <nav className="categoryFirstTabs">{(Object.keys(groups) as Group[]).map(x=><button key={x} className={first===x?"active":""} onClick={()=>setFirst(x)}>{x}</button>)}</nav>
+  <section className="categorySubSection categorySubSectionTop"><div className="categoryDiscoveryHead"><h2>{first} 세부 카테고리</h2><span>분류 선택</span></div><div className="categoryMenuGrid categoryMenuGridCompact">{groups[first].map(x=><Link key={x} href={`/category/${encodeURIComponent(first)}/${encodeURIComponent(x)}`}><span className="categoryMenuIcon"><Icon name={x}/></span><strong>{x}</strong></Link>)}</div></section>
   <section className="categoryProductSection">
    <div className="categoryProductHead"><div><h1>{first} 상품</h1><p>{first} 카테고리의 상품을 한눈에 비교해보세요.</p></div><span>{categoryProducts.length}개 상품</span></div>
    {categoryProducts.length>0?<ProductFeed products={categoryProducts} limit={categoryProducts.length} variant="list"/>:<div className="categoryEmptyProducts"><strong>{first} 상품 준비 중</strong><p>실제 상품 API 연결 후 이 영역에 {first} 상품이 자동으로 표시됩니다.</p></div>}
   </section>
-  <section className="categorySubSection"><div className="categoryDiscoveryHead"><h2>{first} 세부 카테고리</h2><span>분류 선택</span></div><div className="categoryMenuGrid">{groups[first].map(x=><Link key={x} href={`/category/${encodeURIComponent(first)}/${encodeURIComponent(x)}`}><span className="categoryMenuIcon"><Icon name={x}/></span><strong>{x}</strong></Link>)}</div></section>
   <Link className="categoryThemeEntry" href="/theme"><span><b>🔥 테마로 찾기</b><small>계절 · 기념일 · 선물 · 연령 · 취미 · 상황별</small></span><strong>›</strong></Link>
  </main>
 }
