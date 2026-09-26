@@ -42,11 +42,11 @@ export default function ProductFeed({ limit = 8, variant = "grid", products = de
             <span className="productCategory">{product.category}</span>
             <h3>{product.name}</h3>
             <p className="productModel">{product.model}</p>
+            {product.originalPrice != null && product.originalPrice > product.price && <del className="productOriginalPrice">{formatWon(product.originalPrice)}</del>}
             <div className="productPriceRow">
               {(product.discountRate != null && product.discountRate > 0) || (product.originalPrice != null && product.originalPrice > product.price) ? <span className="productDiscountRate">{product.discountRate != null && product.discountRate > 0 ? Math.round(product.discountRate) : Math.round((1-product.price/(product.originalPrice as number))*100)}%</span> : null}
               <strong className="productPrice">{formatWon(product.price)}부터</strong>
             </div>
-            {product.originalPrice != null && product.originalPrice > product.price && <del className="productOriginalPrice">{formatWon(product.originalPrice)}</del>}
             {product.badges && <div className="productBadges">
               {product.badges.lowestPrice && <span className="badgeLowest">최저가</span>}
               {product.badges.priceDrop != null && product.badges.priceDrop > 0 && <span className="badgeDrop">가격하락 {formatWon(product.badges.priceDrop)}</span>}
