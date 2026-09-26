@@ -46,3 +46,6 @@
 /* Quiet CTA treatment for quick compare */
 .quickCompareButton{width:100%;min-height:44px;margin-top:12px;border:0!important;border-radius:10px!important;background:#3f4145!important;color:#fff!important;font-size:14px!important;font-weight:800!important;letter-spacing:-.2px;box-shadow:none!important;cursor:pointer;transition:background .15s ease,transform .15s ease}
 .quickCompareButton:active{background:#2f3134!important;transform:translateY(1px)}
+
+/* Product discount pricing */
+.productPriceRow{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}.productDiscountRate{font-size:16px;font-weight:900;color:#e34b42;line-height:1}.productOriginalPrice{display:block;margin-top:3px;color:#a2a6ad;font-size:12px;font-weight:500;text-decoration:line-through}.productGrid--rail .productDiscountRate{font-size:13px}.productGrid--rail .productPriceRow{gap:5px}
