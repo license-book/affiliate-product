@@ -42,3 +42,7 @@
 .quickModalArt{height:180px;background:#f5f6f8;border-radius:22px 22px 0 0;overflow:hidden}.quickModalArt .productArt{width:100%;height:100%}.quickModalArt img{width:100%;height:100%;object-fit:contain}
 .quickModalBody{padding:20px}.quickModalBody h2{margin:5px 0 4px;font-size:21px}.quickPrice{display:flex;align-items:flex-end;justify-content:space-between;margin:18px 0 10px;padding:14px 0;border-top:1px solid #eee;border-bottom:1px solid #eee}.quickPrice span{font-size:12px;color:#777}.quickPrice strong{font-size:19px}
 .sellerList.compact{display:flex;flex-direction:column}.sellerList.compact .sellerRow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0f0}.sellerList.compact .sellerRow>div{display:flex;gap:8px;min-width:0}.sellerList.compact .sellerRow button{border:0;border-radius:9px;background:#111;color:#fff;padding:8px 10px;font-weight:700}.detailLink{display:block;margin-top:16px;font-weight:800}.demoNote{margin-top:12px;font-size:11px;color:#999;line-height:1.5}
+
+/* Quiet CTA treatment for quick compare */
+.quickCompareButton{width:100%;min-height:44px;margin-top:12px;border:0!important;border-radius:10px!important;background:#3f4145!important;color:#fff!important;font-size:14px!important;font-weight:800!important;letter-spacing:-.2px;box-shadow:none!important;cursor:pointer;transition:background .15s ease,transform .15s ease}
+.quickCompareButton:active{background:#2f3134!important;transform:translateY(1px)}
