@@ -46,7 +46,7 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .athlerHome .feedSection .productGrid--list .productModel{display:none}
 .athlerHome .feedSection .productGrid--list .productPrice{display:inline-block;font-size:16px!important;font-weight:900!important;color:#111;margin-top:2px}
 .athlerHome .feedSection .productGrid--list .sellerCount{display:none}
-.athlerHome .feedSection .productGrid--list .quickCompareButton{display:none!important}
+.athlerHome .feedSection .productGrid--list .quickCompareButton{display:block!important;width:auto!important;margin:8px 0 0 101px!important;padding:9px 14px!important;font-size:11px!important;border-radius:8px!important;background:#3f4145!important;color:#fff!important}
 .athlerHome .feedSection .productGrid--list .wishlistButton{position:absolute!important;right:4px!important;top:39px!important;z-index:3}
 @media(max-width:390px){.athlerHome .feedSection .productGrid--list .productCardMain{grid-template-columns:82px minmax(0,1fr)}.athlerHome .feedSection .productGrid--list .productArt{width:82px!important;height:96px!important}}
 
@@ -196,3 +196,5 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 #recent{scroll-margin-top:64px}
 #recent .homeRecent{padding-top:28px}
 #recent .recentHead{padding-top:4px}
+
+@media(max-width:390px){.athlerHome .feedSection .productGrid--list .quickCompareButton{margin-left:93px!important}}
