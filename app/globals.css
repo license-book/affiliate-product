@@ -49,3 +49,6 @@
 
 /* Product discount pricing */
 .productPriceRow{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}.productDiscountRate{font-size:16px;font-weight:900;color:#e34b42;line-height:1}.productOriginalPrice{display:block;margin-top:3px;color:#a2a6ad;font-size:12px;font-weight:500;text-decoration:line-through}.productGrid--rail .productDiscountRate{font-size:13px}.productGrid--rail .productPriceRow{gap:5px}
+
+/* Price hierarchy: regular original price, bold discount and sale price */
+.productOriginalPrice{font-weight:400!important}.productDiscountRate,.productPriceRow .productPrice{font-weight:900!important}
