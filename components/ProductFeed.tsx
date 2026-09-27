@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { demoProducts, formatWon, type DemoProduct } from "../lib/demo-products";
 import WishlistButton from "./WishlistButton";
 import {trackRankEvent} from "../lib/ranking";
@@ -32,13 +32,15 @@ function QuickCompare({ product, onClose }: { product: DemoProduct; onClose: () 
 
 export default function ProductFeed({ limit = 8, variant = "grid", products = demoProducts }: { limit?: number; variant?: "grid"|"list"|"rail"|"showcase"; products?: DemoProduct[] }) {
   const [selected, setSelected] = useState<DemoProduct | null>(null);
+  const showcaseRailRef = useRef<HTMLDivElement | null>(null);
+  const [showcasePage, setShowcasePage] = useState(0);
   const visible = products.slice(0, limit);
   if (variant === "showcase") {
     const groups: DemoProduct[][] = [];
     for (let i = 0; i < visible.length; i += 4) groups.push(visible.slice(i, i + 4));
     const discount = (p: DemoProduct) => p.discountRate != null && p.discountRate > 0 ? Math.round(p.discountRate) : p.originalPrice != null && p.originalPrice > p.price ? Math.round((1-p.price/p.originalPrice)*100) : null;
     return <>
-      <div className="dealShowcaseRail" aria-label="추천 상품 모음">
+      <div className="dealShowcaseRail" ref={showcaseRailRef} aria-label="추천 상품 모음" onScroll={(e)=>{const el=e.currentTarget; const w=el.clientWidth; if(w) setShowcasePage(Math.max(0,Math.min(groups.length-1,Math.round(el.scrollLeft/w))))}}>
         {groups.map((group, groupIndex) => <section className="dealShowcase" key={group[0]?.slug ?? groupIndex}>
           {group[0] && <article className="dealHero">
             <WishlistButton product={group[0]} />
@@ -69,9 +71,14 @@ export default function ProductFeed({ limit = 8, variant = "grid", products = de
           </div>
         </section>)}
       </div>
+      {groups.length > 1 && <div className="showcasePager">
+        <button type="button" aria-label="이전 상품" disabled={showcasePage===0} onClick={()=>{const next=Math.max(0,showcasePage-1);const el=showcaseRailRef.current;if(el) el.scrollTo({left:next*el.clientWidth,behavior:"smooth"});setShowcasePage(next)}}>‹</button>
+        <b>{showcasePage+1} <em>/ {groups.length}</em></b>
+        <button type="button" aria-label="다음 상품" disabled={showcasePage===groups.length-1} onClick={()=>{const next=Math.min(groups.length-1,showcasePage+1);const el=showcaseRailRef.current;if(el) el.scrollTo({left:next*el.clientWidth,behavior:"smooth"});setShowcasePage(next)}}>›</button>
+      </div>}
       <style jsx>{`
         .dealShowcaseRail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:4px;padding:0 4px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-        .dealShowcaseRail::-webkit-scrollbar{display:none}.dealShowcase{position:relative;flex:0 0 calc(100% - 24px);scroll-snap-align:start;border:1px solid #e9e9e9;border-radius:18px;padding:14px;background:#fff;box-sizing:border-box}
+        .dealShowcaseRail::-webkit-scrollbar{display:none}.showcasePager{display:flex;align-items:center;justify-content:center;gap:28px;padding:18px 0 2px}.showcasePager button{width:52px;height:44px;border:1px solid #ddd;border-radius:10px;background:#fff;font-size:24px;color:#444}.showcasePager button:disabled{opacity:.3}.showcasePager b{font-size:16px}.showcasePager em{font-style:normal;color:#999;font-weight:500}.dealShowcase{position:relative;flex:0 0 calc(100% - 24px);scroll-snap-align:start;border:1px solid #e9e9e9;border-radius:18px;padding:14px;background:#fff;box-sizing:border-box}
         .dealHero{position:relative;padding-bottom:14px;border-bottom:1px solid #eee}.dealHeroLink{display:grid;grid-template-columns:42% minmax(0,1fr);gap:13px;align-items:start}.dealHero :global(.productArt){width:100%!important;height:auto!important;aspect-ratio:1/1!important;border-radius:14px!important}.dealHeroBody{min-width:0;padding-top:5px}.dealHeroBody h3{margin:4px 0 2px;font-size:16px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.dealHero :global(.wishlistButton){position:absolute!important;right:2px!important;top:2px!important;z-index:3}.dealHero :global(.quickCompareButton){margin:10px 0 0 calc(42% + 13px)!important;width:auto!important;background:#3f4145!important;color:#fff!important;border-radius:8px!important;padding:8px 12px!important}
         .dealMiniList{padding-top:5px}.dealMini{position:relative}.dealMini>a{display:grid;grid-template-columns:76px minmax(0,1fr);gap:11px;align-items:center;padding:8px 34px 8px 0}.dealMini :global(.productArt){width:76px!important;height:76px!important;aspect-ratio:1/1!important;border-radius:9px!important}.dealMiniBody{min-width:0}.dealMiniBody h3{margin:0 0 2px;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dealMini :global(.wishlistButton){position:absolute!important;right:0!important;top:27px!important;z-index:3}.dealMini :global(.productOriginalPrice){font-size:11px!important;font-weight:400!important}.dealMini :global(.productPrice){font-size:14px!important;font-weight:900!important}.dealMini :global(.productDiscountRate),.dealHero :global(.productDiscountRate){color:#e53935!important;font-weight:900!important}.dealMini :global(.sellerCount){display:block!important;margin-top:3px;font-size:9px!important;color:#999!important}.dealHero :global(.sellerCount){display:block!important;margin-top:6px;font-size:10px!important;color:#888!important}
         @media(max-width:390px){.dealShowcase{flex-basis:calc(100% - 18px);padding:12px}.dealHeroLink{grid-template-columns:40% minmax(0,1fr);gap:11px}.dealHero :global(.quickCompareButton){margin-left:calc(40% + 11px)!important}.dealMini>a{grid-template-columns:70px minmax(0,1fr)}.dealMini :global(.productArt){width:70px!important;height:70px!important}}
