@@ -215,3 +215,15 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .productGrid .productPriceRow{margin-top:0!important}
 
 .bestSellerTabs button{font-family:inherit;cursor:pointer;white-space:nowrap;appearance:none;-webkit-appearance:none;}
+
+/* Global compact product text spacing */
+.productCardBody{display:flex!important;flex-direction:column!important;gap:0!important}
+.productCardBody h3{margin-top:0!important;margin-bottom:0!important}
+.productCardBody .productModel{margin-top:0!important;margin-bottom:0!important}
+.productCardBody .productOriginalPrice{margin-top:0!important;margin-bottom:0!important;line-height:1.15!important}
+.productCardBody .productPriceRow{margin-top:0!important;margin-bottom:0!important;line-height:1.15!important}
+.productCardBody .productBadges{margin-top:4px!important}
+.productCardBody .sellerCount{margin-top:4px!important}
+.recentCardBody{display:flex!important;flex-direction:column!important;gap:0!important}
+.recentCardBody h3{margin-top:0!important;margin-bottom:0!important}
+.recentCardBody .productPrice{margin-top:0!important}
