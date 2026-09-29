@@ -36,7 +36,6 @@ export default function RecentlyViewed() {
             <Link href={`/product/${saved.slug}`} className="recentCardMain">
               <div className={`productArt ${product.tone}`} aria-hidden="true"><span /></div>
               <div className="recentCardBody">
-                <span className="productCategory">{product.category}</span>
                 <h3>{product.name}</h3>
                 <p className="productModel">{product.model}</p>
                 <strong className="productPrice">{formatWon(product.price)}부터</strong>
