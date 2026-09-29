@@ -236,3 +236,19 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .purposePager button{width:52px;height:44px;border:1px solid #ddd;border-radius:10px;background:#fff;font-size:24px;color:#555}
 .purposePager button:disabled{opacity:.3}
 .purposePager b{font-size:16px}.purposePager em{font-style:normal;color:#999;font-weight:500}
+
+/* Popular products showcase — force requested horizontal hierarchy */
+#best .dealShowcase{box-sizing:border-box!important}
+#best .dealHero{min-height:0!important;padding:12px 0 14px!important}
+#best .dealHeroLink{display:grid!important;grid-template-columns:156px minmax(0,1fr)!important;gap:14px!important;align-items:center!important}
+#best .dealHero .productArt{grid-column:1!important;width:156px!important;height:156px!important;min-height:156px!important;max-height:156px!important;aspect-ratio:1/1!important;margin:0!important}
+#best .dealHeroBody{grid-column:2!important;padding:0 38px 0 0!important;min-width:0!important}
+#best .dealMini>a{display:grid!important;grid-template-columns:104px minmax(0,1fr)!important;gap:12px!important;align-items:center!important;padding:10px 34px 10px 0!important}
+#best .dealMini .productArt{grid-column:1!important;width:104px!important;height:104px!important;min-height:104px!important;max-height:104px!important;aspect-ratio:1/1!important;margin:0!important}
+#best .dealMiniBody{grid-column:2!important;min-width:0!important}
+@media(max-width:390px){
+ #best .dealHeroLink{grid-template-columns:138px minmax(0,1fr)!important}
+ #best .dealHero .productArt{width:138px!important;height:138px!important;min-height:138px!important;max-height:138px!important}
+ #best .dealMini>a{grid-template-columns:92px minmax(0,1fr)!important}
+ #best .dealMini .productArt{width:92px!important;height:92px!important;min-height:92px!important;max-height:92px!important}
+}
