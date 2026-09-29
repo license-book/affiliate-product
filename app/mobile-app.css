@@ -344,3 +344,12 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .heroProductSlide.heroMint{background:linear-gradient(135deg,#f2fbf7,#e5f5ed)!important}
 .heroProductSlide.heroBeige{background:linear-gradient(135deg,#fbf7f1,#f0e7da)!important}
 .heroProductSlide.heroLavender{background:linear-gradient(135deg,#f7f4ff,#eee9ff)!important}
+
+/* Best sellers: two swipe pages, six products each */
+.bestSellerRail{display:flex!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch}
+.bestSellerRail::-webkit-scrollbar{display:none}
+.bestSellerPage{flex:0 0 100%!important;min-width:100%!important;scroll-snap-align:start}
+.bestSellerPager{display:flex;align-items:center;justify-content:center;gap:24px;padding:14px 0 2px}
+.bestSellerPager button{width:42px;height:36px;border:1px solid #e1e1e1;border-radius:9px;background:#fff;font-size:21px;color:#555}
+.bestSellerPager button:disabled{opacity:.28}
+.bestSellerPager b{font-size:13px}.bestSellerPager em{font-style:normal;font-weight:500;color:#999}
