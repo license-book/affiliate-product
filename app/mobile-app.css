@@ -227,3 +227,12 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .recentCardBody{display:flex!important;flex-direction:column!important;gap:0!important}
 .recentCardBody h3{margin-top:0!important;margin-bottom:0!important}
 .recentCardBody .productPrice{margin-top:0!important}
+
+/* Purpose recommendation: 6 products per swipe page */
+.purposeProductRail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.purposeProductRail::-webkit-scrollbar{display:none}
+.purposeProductPage{flex:0 0 100%;min-width:100%;scroll-snap-align:start}
+.purposePager{display:flex;align-items:center;justify-content:center;gap:30px;padding:22px 0 4px}
+.purposePager button{width:52px;height:44px;border:1px solid #ddd;border-radius:10px;background:#fff;font-size:24px;color:#555}
+.purposePager button:disabled{opacity:.3}
+.purposePager b{font-size:16px}.purposePager em{font-style:normal;color:#999;font-weight:500}
