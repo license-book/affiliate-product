@@ -299,3 +299,19 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
  .heroProduct small{display:none}
  .heroProduct>b{font-size:9px}
 }
+
+/* Hero products: one featured item above, two below */
+.heroProductVisual{display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr 1fr!important;gap:8px!important;align-items:center!important;justify-items:center!important;padding:0 0 0 10px!important}
+.heroProduct{width:100%!important;max-width:104px!important;transform:none!important}
+.heroProduct.main{grid-column:1 / 3!important;grid-row:1!important;width:100%!important;max-width:138px!important;transform:none!important;align-self:end!important}
+.heroProduct:not(.main){grid-row:2!important;align-self:start!important}
+.heroProduct .productArt{width:100%!important;aspect-ratio:1/1!important}
+.heroProduct.main .productArt{max-height:138px!important}
+.heroProduct:not(.main) .productArt{max-height:104px!important}
+@media(max-width:390px){
+ .heroProductVisual{gap:6px!important;padding-left:6px!important}
+ .heroProduct.main{max-width:126px!important}
+ .heroProduct{max-width:94px!important}
+ .heroProduct.main .productArt{max-height:126px!important}
+ .heroProduct:not(.main) .productArt{max-height:94px!important}
+}
