@@ -336,3 +336,11 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
  .heroProduct small{display:block!important;font-size:8px!important}
  .heroProduct>b{font-size:8px!important}
 }
+
+/* Hero slide theme backgrounds */
+.heroProductSlide.heroBlue{background:linear-gradient(135deg,#f3f7ff,#eaf1ff)!important}
+.heroProductSlide.heroCoral{background:linear-gradient(135deg,#fff6f3,#ffebe5)!important}
+.heroProductSlide.heroCream{background:linear-gradient(135deg,#fffaf0,#f8f0dc)!important}
+.heroProductSlide.heroMint{background:linear-gradient(135deg,#f2fbf7,#e5f5ed)!important}
+.heroProductSlide.heroBeige{background:linear-gradient(135deg,#fbf7f1,#f0e7da)!important}
+.heroProductSlide.heroLavender{background:linear-gradient(135deg,#f7f4ff,#eee9ff)!important}
