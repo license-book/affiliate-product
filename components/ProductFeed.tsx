@@ -16,7 +16,7 @@ export default function ProductFeed({ limit = 8, variant = "grid", products = de
   const visible = products.slice(0, limit);
   if (variant === "showcase") {
     const groups: DemoProduct[][] = [];
-    for (let i = 0; i < visible.length; i += 5) groups.push(visible.slice(i, i + 5));
+    for (let i = 0; i < visible.length; i += 4) groups.push(visible.slice(i, i + 4));
     const discount = (p: DemoProduct) => p.discountRate != null && p.discountRate > 0 ? Math.round(p.discountRate) : p.originalPrice != null && p.originalPrice > p.price ? Math.round((1-p.price/p.originalPrice)*100) : null;
     return <>
       <div className="dealShowcaseRail" ref={showcaseRailRef} aria-label="추천 상품 모음" onScroll={(e)=>{const el=e.currentTarget; const w=el.clientWidth; if(w) setShowcasePage(Math.max(0,Math.min(groups.length-1,Math.round(el.scrollLeft/w))))}}>
