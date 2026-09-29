@@ -252,3 +252,24 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
  #best .dealMini>a{grid-template-columns:92px minmax(0,1fr)!important}
  #best .dealMini .productArt{width:92px!important;height:92px!important;min-height:92px!important;max-height:92px!important}
 }
+
+/* Curated hot deals */
+.homeHotDeals{padding:26px 0 22px;border-bottom:8px solid #f6f6f6;overflow:hidden}
+.homeHotDeals .feedTitle{padding-left:18px;padding-right:18px}
+.hotDealFilters{display:flex;gap:8px;overflow-x:auto;padding:0 18px 14px;scrollbar-width:none}
+.hotDealFilters::-webkit-scrollbar{display:none}
+.hotDealFilters button{flex:0 0 auto;border:1px solid #e6e6e6;background:#fff;border-radius:18px;padding:8px 14px;font-size:12px;font-weight:700;color:#666}
+.hotDealFilters button.active{background:#111;border-color:#111;color:#fff}
+.hotDealRail{display:flex;gap:10px;overflow-x:auto;padding:0 18px 8px;scroll-snap-type:x proximity;scrollbar-width:none}
+.hotDealRail::-webkit-scrollbar{display:none}
+.hotDealCard{flex:0 0 168px;min-width:0;scroll-snap-align:start;text-decoration:none;color:inherit}
+.hotDealCard .productArt{width:168px!important;height:168px!important;aspect-ratio:1/1!important;border-radius:12px!important;overflow:hidden}
+.hotDealCard .productArt img{width:100%;height:100%;object-fit:cover}
+.hotDealInfo{padding-top:9px}
+.hotDealInfo>div{display:flex;align-items:center;gap:6px;min-width:0}
+.hotDealBadge{font-size:11px;color:#e33;font-weight:900}
+.hotDealInfo small{font-size:10px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hotDealInfo h3{margin:5px 0 4px;font-size:13px;line-height:1.35;height:35px;overflow:hidden}
+.hotDealInfo del{display:block;font-size:11px;color:#aaa;font-weight:400}
+.hotDealInfo strong{display:block;margin-top:1px;font-size:15px;color:#111}
+.hotDealNotice{margin:10px 18px 0;font-size:10px;line-height:1.5;color:#999}
