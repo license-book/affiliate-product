@@ -14,7 +14,7 @@ const configs=[
 
 export default function HeroCarousel({slides:_slides}:{slides?:readonly unknown[]}){
  const rail=useRef<HTMLDivElement>(null); const [active,setActive]=useState(0);
- useEffect(()=>{const el=rail.current;if(!el)return;const id=window.setInterval(()=>setActive(cur=>{const next=(cur+1)%configs.length;(el.children[next] as HTMLElement)?.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});return next}),4500);return()=>clearInterval(id)},[]);
+ useEffect(()=>{const el=rail.current;if(!el)return;const id=window.setInterval(()=>setActive(cur=>{const next=(cur+1)%configs.length;el.scrollTo({left:next*el.clientWidth,behavior:"smooth"});return next}),4500);return()=>clearInterval(id)},[]);
  const sync=()=>{const el=rail.current;if(!el)return;const w=el.clientWidth;setActive(Math.max(0,Math.min(configs.length-1,Math.round(el.scrollLeft/w))))};
  return <section className="heroViewport heroProductViewport" aria-label="상품 추천"><div className="heroRail" ref={rail} onScroll={sync}>{configs.map((c,i)=>{
   const products=c[4].map(n=>demoProducts[n%demoProducts.length]);
