@@ -7,14 +7,18 @@ import ProductFeed from "../../components/ProductFeed";
 import {demoProducts} from "../../lib/demo-products";
 
 const groups={
-"디지털":["노트북·PC","스마트폰","태블릿","모니터","이어폰·헤드폰","스마트워치","키보드·마우스","저장장치"],
-"가전":["TV","냉장고","세탁기·건조기","청소기","에어컨","주방가전","생활가전","계절가전"],
-"생활":["청소·정리","욕실용품","수납용품","침구","조명","생활잡화","반려용품","건강용품"],
-"주방":["냄비·팬","식기","조리도구","보관용기","텀블러","커피용품","베이킹","주방잡화"],
+"식품":["신선식품","가공식품","간편식·밀키트","과자·간식","음료·커피","생수","건강식품","쌀·잡곡","냉동·냉장","조미료·소스","라면·면류","반찬·김치"],
+"생활/주방":["청소·정리","욕실용품","수납용품","냄비·팬","식기","조리도구","보관용기","주방잡화"],
 "패션":["상의","하의","아우터","신발","가방","모자","언더웨어","패션잡화"],
 "뷰티":["스킨케어","메이크업","헤어","바디","향수","뷰티기기","남성뷰티","선케어"],
-"캠핑·레저":["캠핑","차박","등산","자전거","골프","낚시","여행용품","스포츠"],
-"육아":["출산용품","유아동패션","완구","수유·이유식","유아가구","외출용품","학습용품","위생용품"]} as const;
+"디지털/가전":["노트북·PC","스마트폰","태블릿","TV","냉장고","세탁기·건조기","청소기","주방가전"],
+"건강":["건강식품","건강측정","안마·마사지","찜질·온열","홈트레이닝","구강관리","위생용품","건강관리용품"],
+"유아/키즈":["출산용품","유아동패션","완구","수유·이유식","유아가구","외출용품","학습용품","위생용품"],
+"반려동물":["강아지 사료","고양이 사료","배변용품","위생·미용","장난감","산책용품","이동장·카시트","급식기·급수기"],
+"스포츠/레저":["캠핑","차박","등산","자전거","골프","낚시","여행용품","스포츠"],
+"가구/인테리어":["침대·매트리스","소파","책상·의자","수납가구","조명","침구","홈데코","커튼·러그"],
+"자동차용품":["세차용품","차량수납","차량전자","인테리어","안전용품","방향제","타이어용품","차박용품"],
+"취미/문구":["필기구","노트·다이어리","사무용품","미술용품","독서용품","DIY","악기","수집·취미"]} as const;
 type Group=keyof typeof groups;
 const paths:Record<string,string>={
 "노트북·PC":"M4 5h16v11H4zM8 20h8M12 16v4","스마트폰":"M8 2h8v20H8zM11 18h2","태블릿":"M5 3h14v18H5zM11 18h2","모니터":"M3 4h18v13H3zM8 21h8M12 17v4","이어폰·헤드폰":"M4 13v-2a8 8 0 0116 0v2M4 13h3v6H5a1 1 0 01-1-1zM20 13h-3v6h2a1 1 0 001-1z","스마트워치":"M8 7h8v10H8zM9 2h6l1 5H8zM8 17h8l-1 5H9z","키보드·마우스":"M3 7h12v9H3zM5 10h1m2 0h1m2 0h1M18 5c2 0 3 2 3 4v6c0 2-1 4-3 4s-3-2-3-4V9c0-2 1-4 3-4z","저장장치":"M6 3h12v18H6zM9 6h6v5H9zM9 17h6",
@@ -32,15 +36,27 @@ function CategoryContent(){
  const searchParams=useSearchParams();
  const requested=searchParams.get("group");
  const hasGroup=!!(requested&&Object.prototype.hasOwnProperty.call(groups,requested));
- const initial=(hasGroup?requested:"디지털") as Group;
+ const initial=(hasGroup?requested:"식품") as Group;
  const [first,setFirst]=useState<Group>(initial);
  const tabsRef=useRef<HTMLElement>(null);
  const subTabsRef=useRef<HTMLDivElement>(null);
  useEffect(()=>{if(hasGroup)setFirst(initial)},[requested,hasGroup,initial]);
  useEffect(()=>{if(!hasGroup)return; const el=tabsRef.current?.querySelector(`[data-category="${first}"]`) as HTMLElement|null; if(el&&tabsRef.current){tabsRef.current.scrollTo({left:el.offsetLeft-(tabsRef.current.clientWidth-el.offsetWidth)/2,behavior:"smooth"})}},[first,hasGroup]);
- const digital=["노트북","스마트폰","디지털"];
- const appliance=["생활가전","TV·가전"];
- const categoryProducts=demoProducts.filter(p=>first==="디지털"?digital.includes(p.category):first==="가전"?appliance.includes(p.category):p.category===first);
+ const categoryAliases:Record<Group,string[]>={
+  "식품":["식품","신선식품","가공식품"],
+  "생활/주방":["생활","주방","생활용품","주방용품"],
+  "패션":["패션"],
+  "뷰티":["뷰티"],
+  "디지털/가전":["노트북","스마트폰","디지털","생활가전","TV·가전","가전"],
+  "건강":["건강","건강용품"],
+  "유아/키즈":["육아","유아","키즈"],
+  "반려동물":["반려동물","반려용품"],
+  "스포츠/레저":["캠핑·레저","스포츠","레저"],
+  "가구/인테리어":["가구","인테리어"],
+  "자동차용품":["자동차용품","자동차"],
+  "취미/문구":["취미","문구"]
+ };
+ const categoryProducts=demoProducts.filter(p=>categoryAliases[first].includes(p.category));
 
  if(!hasGroup)return <main className="categoryMenuPage">
   <header className="categoryMenuHeader">카테고리</header>
