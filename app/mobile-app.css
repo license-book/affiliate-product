@@ -387,3 +387,25 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .searchResultMobile .productGrid--list .productModel{margin:0!important}
 .athlerHome .feedSection .productPrice,
 .athlerHome .feedSection .productGrid--list .productPrice{margin-top:0!important}
+
+
+/* Today's hot deals: match title-to-price spacing with every product list */
+.homeHotDeals .hotDealInfo{padding-top:9px!important}
+.homeHotDeals .hotDealInfo h3{
+  height:auto!important;
+  min-height:0!important;
+  margin:5px 0 4px!important;
+  line-height:1.35!important;
+  display:-webkit-box!important;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden!important;
+}
+.homeHotDeals .hotDealInfo del{
+  margin:0!important;
+  line-height:1.15!important;
+}
+.homeHotDeals .hotDealInfo strong{
+  margin:0!important;
+  line-height:1.15!important;
+}
