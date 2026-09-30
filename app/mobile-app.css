@@ -432,3 +432,48 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
   filter:none!important;
   opacity:1!important;
 }
+
+
+/* Final product-list spacing normalization: no reserved title/model height */
+.athlerHome .productCardBody h3,
+.searchResultMobile .productCardBody h3,
+.categoryPage .productCardBody h3,
+.bestSellerPage .productCardBody h3,
+.homePurposeInteractive .productCardBody h3,
+.recentCardBody h3,
+#best .dealHeroBody h3,
+#best .dealMiniBody h3,
+.homeHotDeals .hotDealInfo h3{
+  min-height:0!important;
+  margin-bottom:4px!important;
+}
+.athlerHome .productCardBody .productModel,
+.searchResultMobile .productCardBody .productModel,
+.categoryPage .productCardBody .productModel{
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+.athlerHome .productCardBody .productOriginalPrice,
+.athlerHome .productCardBody .productPriceRow,
+.athlerHome .productCardBody .productPrice,
+.searchResultMobile .productCardBody .productOriginalPrice,
+.searchResultMobile .productCardBody .productPriceRow,
+.searchResultMobile .productCardBody .productPrice,
+.categoryPage .productCardBody .productOriginalPrice,
+.categoryPage .productCardBody .productPriceRow,
+.categoryPage .productCardBody .productPrice,
+.bestSellerPage .productOriginalPrice,
+.bestSellerPage .productPriceRow,
+.bestSellerPage .productPrice,
+.homePurposeInteractive .productOriginalPrice,
+.homePurposeInteractive .productPriceRow,
+.homePurposeInteractive .productPrice,
+.recentCardBody .productPrice,
+#best .dealHeroBody .productOriginalPrice,
+#best .dealHeroBody .productPriceRow,
+#best .dealMiniBody .productOriginalPrice,
+#best .dealMiniBody .productPriceRow,
+.homeHotDeals .hotDealInfo del,
+.homeHotDeals .hotDealInfo strong{
+  margin-top:0!important;
+}
