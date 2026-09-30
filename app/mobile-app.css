@@ -353,3 +353,37 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .bestSellerPager button{width:42px;height:36px;border:1px solid #e1e1e1;border-radius:9px;background:#fff;font-size:21px;color:#555}
 .bestSellerPager button:disabled{opacity:.28}
 .bestSellerPager b{font-size:13px}.bestSellerPager em{font-style:normal;font-weight:500;color:#999}
+
+
+/* Unified product title -> price spacing across every product list */
+.productGrid .productCardBody h3,
+.recentCardBody h3,
+.bestSellerPage .productCardBody h3,
+.homePurposeInteractive .productCardBody h3{
+  margin-bottom:4px!important;
+}
+.productGrid .productCardBody .productModel,
+.recentCardBody .productModel,
+.bestSellerPage .productCardBody .productModel,
+.homePurposeInteractive .productCardBody .productModel{
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+.productGrid .productCardBody .productOriginalPrice,
+.productGrid .productCardBody .productPriceRow,
+.productGrid .productCardBody .productPrice,
+.recentCardBody .productOriginalPrice,
+.recentCardBody .productPriceRow,
+.recentCardBody .productPrice,
+.bestSellerPage .productOriginalPrice,
+.bestSellerPage .productPriceRow,
+.bestSellerPage .productPrice,
+.homePurposeInteractive .productOriginalPrice,
+.homePurposeInteractive .productPriceRow,
+.homePurposeInteractive .productPrice{
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+.searchResultMobile .productGrid--list .productModel{margin:0!important}
+.athlerHome .feedSection .productPrice,
+.athlerHome .feedSection .productGrid--list .productPrice{margin-top:0!important}
