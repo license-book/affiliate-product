@@ -414,3 +414,21 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .promoBannerVisual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .promoBannerVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.76) 48%,rgba(255,255,255,.08) 100%)}
 .promoBanner--compact .promoBannerVisual:after{background:linear-gradient(180deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.60) 58%,rgba(255,255,255,.08) 100%)}
+
+/* Promo photo refinement: borderless cards, preserve photography */
+.promoBanner,
+.promoBanner--compact{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+.promoBannerVisual:after{
+  background:linear-gradient(90deg,rgba(255,255,255,.70) 0%,rgba(255,255,255,.38) 38%,rgba(255,255,255,.06) 68%,rgba(255,255,255,0) 100%)!important;
+}
+.promoBanner--compact .promoBannerVisual:after{
+  background:linear-gradient(180deg,rgba(255,255,255,.58) 0%,rgba(255,255,255,.25) 46%,rgba(255,255,255,0) 78%)!important;
+}
+.promoBannerVisual img{
+  filter:none!important;
+  opacity:1!important;
+}
