@@ -1,17 +1,17 @@
 "use client";
 import {useRef,useState} from "react";
 import ProductFeed from "./ProductFeed";
-import {demoProducts} from "../lib/demo-products";
+import {demoProducts,type DemoProduct} from "../lib/demo-products";
 
 const purposes=["혼자 살 때","선물할 때","이사할 때","출산 준비","여행 갈 때","공부·업무","차량용","취미생활"];
 const PAGE_SIZE=6;
-export default function PurposeRecommendations(){
+export default function PurposeRecommendations({pools={}}:{pools?:Record<string,DemoProduct[]>}){
  const [active,setActive]=useState(purposes[0]);
  const [page,setPage]=useState(0);
  const railRef=useRef<HTMLDivElement|null>(null);
- const offset=purposes.indexOf(active);
- const total=Math.max(12,Math.min(18,demoProducts.length));
- const items=Array.from({length:total},(_,i)=>demoProducts[(offset*2+i)%demoProducts.length]);
+ const source=pools[active]?.length?pools[active]:demoProducts;
+ const total=Math.max(12,Math.min(18,source.length));
+ const items=Array.from({length:total},(_,i)=>source[i%source.length]);
  const pages=Array.from({length:Math.ceil(items.length/PAGE_SIZE)},(_,i)=>items.slice(i*PAGE_SIZE,(i+1)*PAGE_SIZE));
  const move=(next:number)=>{const n=Math.max(0,Math.min(pages.length-1,next));const el=railRef.current;if(el)el.scrollTo({left:n*el.clientWidth,behavior:"smooth"});setPage(n)};
  const select=(x:string)=>{setActive(x);setPage(0);requestAnimationFrame(()=>railRef.current?.scrollTo({left:0,behavior:"auto"}))};
