@@ -3,21 +3,20 @@
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import ProductFeed from "./ProductFeed";
-import { demoProducts } from "../lib/demo-products";
+import { demoProducts, type DemoProduct } from "../lib/demo-products";
 
 const tabs = ["BEST","식품","디지털·가전","패션·뷰티","리빙·육아","여행·레저"];
 const PAGE_SIZE=6;
 
-export default function BestSellerSection(){
+export default function BestSellerSection({pools={}}:{pools?:Record<string,DemoProduct[]>}){
   const [active,setActive]=useState(0);
   const [page,setPage]=useState(0);
   const rail=useRef<HTMLDivElement>(null);
   const pages=useMemo(()=>{
-    const offset=active % demoProducts.length;
-    const base=active===0?demoProducts:[...demoProducts.slice(offset),...demoProducts.slice(0,offset)];
-    const list=Array.from({length:12},(_,i)=>base[i%base.length]);
+    const source=pools[tabs[active]]?.length?pools[tabs[active]]:demoProducts;
+    const list=Array.from({length:Math.max(12,source.length)},(_,i)=>source[i%source.length]);
     return [list.slice(0,PAGE_SIZE),list.slice(PAGE_SIZE,PAGE_SIZE*2)];
-  },[active]);
+  },[active,pools]);
   const go=(n:number)=>{const next=Math.max(0,Math.min(pages.length-1,n));setPage(next);rail.current?.scrollTo({left:next*rail.current.clientWidth,behavior:"smooth"});};
   const choose=(i:number)=>{setActive(i);setPage(0);rail.current?.scrollTo({left:0,behavior:"auto"});};
   const sync=()=>{const el=rail.current;if(el)setPage(Math.max(0,Math.min(pages.length-1,Math.round(el.scrollLeft/el.clientWidth))));};
