@@ -33,7 +33,7 @@ export default function ProductFeed({ limit = 8, variant = "grid", products = de
                 <div className="productPriceRow">{discount(group[0]) != null && <span className="productDiscountRate">{discount(group[0])}%</span>}<strong className="productPrice">{formatWon(group[0].price)}부터</strong></div>
                 <span className="sellerCount">{group[0].affiliateUrl?"판매처에서 보기 →":`${group[0].sellers.length}개 판매처 가격비교 →`}</span>
               </div>
-            </Link>
+            </a>
           </article>}
           <div className="dealMiniList">
             {group.slice(1).map(product => <article className="dealMini" key={product.slug}>
@@ -45,7 +45,7 @@ export default function ProductFeed({ limit = 8, variant = "grid", products = de
                   <div className="productPriceRow">{discount(product) != null && <span className="productDiscountRate">{discount(product)}%</span>}<strong className="productPrice">{formatWon(product.price)}</strong></div>
                   <span className="sellerCount">{product.affiliateUrl?"판매처에서 보기":`${product.sellers.length}개 판매처`}</span>
                 </div>
-              </Link>
+              </a>
             </article>)}
           </div>
         </section>)}
