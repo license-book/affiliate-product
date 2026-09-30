@@ -32,7 +32,7 @@ const slides:readonly (readonly [string,string,string,string,string,string])[]=[
 ];
 async function getAdpickProducts():Promise<DemoProduct[]>{
   try{
-    const res=await fetch("http://13.125.23.112:3000/search?q=%EB%85%B8%ED%8A%B8%EB%B6%81",{next:{revalidate:900}});
+    const res=await fetch("https://powell-forestry-units-sally.trycloudflare.com/search?q=%EB%85%B8%ED%8A%B8%EB%B6%81",{next:{revalidate:900}});
     if(!res.ok) return [];
     const json=await res.json();
     const rows=Array.isArray(json?.data)?json.data:[];
