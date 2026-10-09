@@ -495,3 +495,10 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .promoBanner--editorial .promoBannerVisual:after,.promoBanner--editorial.promoBanner--compact .promoBannerVisual:after{display:none}
 @media(min-width:761px){.homePromoDuo{flex-direction:row}.homePromoDuo>.promoBanner{flex:1;min-width:0}.promoBanner--editorial,.promoBanner--editorial.promoBanner--compact{min-height:175px}.promoBanner--editorial .promoBannerCopy strong,.promoBanner--editorial.promoBanner--compact .promoBannerCopy strong{font-size:23px}}
 @media(max-width:370px){.homePromoDuo{padding-left:14px;padding-right:14px}.promoBanner--editorial,.promoBanner--editorial.promoBanner--compact{padding:18px 15px}.promoBanner--editorial .promoBannerCopy strong,.promoBanner--editorial.promoBanner--compact .promoBannerCopy strong{font-size:18px}}
+
+
+/* Bespoke floating SVG illustrations, without a rectangular photo panel */
+.promoBanner--illustrated .promoBannerVisual{inset:0 3px 0 auto;width:34%;height:100%;display:flex;align-items:center;justify-content:center;overflow:visible;pointer-events:none}
+.promoBanner--illustrated .promoBannerVisual svg{display:block;width:100%;height:auto;max-height:95%;overflow:visible;filter:drop-shadow(0 8px 10px rgba(22,20,70,.12))}
+.promoBanner--illustrated .promoBannerCopy,.promoBanner--illustrated.promoBanner--compact .promoBannerCopy{width:68%;flex-basis:68%;max-width:68%}
+.promoBanner--illustrated .promoBannerVisual:after{display:none}
