@@ -575,3 +575,44 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
  .promoBanner--illustrated .promoBannerVisual{height:90px}
  .promoBanner--illustrated .promoBannerVisual svg{height:90px;max-height:90px}
 }
+
+
+/* Reference-style compact banners: balanced copy and floating icon */
+.promoBanner--editorial.promoBanner--illustrated,
+.promoBanner--editorial.promoBanner--illustrated.promoBanner--compact{
+ height:96px;min-height:0;padding:10px 14px;border-radius:17px;
+}
+.promoBanner--illustrated .promoBannerCopy,
+.promoBanner--illustrated.promoBanner--compact .promoBannerCopy{
+ width:73%;max-width:73%;flex-basis:73%;
+}
+.promoBanner--illustrated .promoBannerCopy small{
+ font-size:10px;line-height:1.25;font-weight:500;letter-spacing:0;
+}
+.promoBanner--illustrated .promoBannerCopy strong,
+.promoBanner--illustrated.promoBanner--compact .promoBannerCopy strong{
+ margin-top:3px;font-size:clamp(15px,3.8vw,18px);line-height:1.18;font-weight:900;letter-spacing:-.045em;
+}
+.promoBanner--illustrated .promoBannerCopy p,
+.promoBanner--illustrated.promoBanner--compact .promoBannerCopy p{
+ margin-top:3px;font-size:clamp(9px,2.3vw,11px);line-height:1.22;
+}
+.promoBanner--illustrated .promoBannerVisual{
+ top:50%;right:7px;bottom:auto;width:25%;height:78px;transform:translateY(-50%);
+}
+.promoBanner--illustrated .promoBannerVisual svg{
+ height:78px;max-height:78px;width:100%;
+}
+.homePromoDuo{gap:9px}
+@media(min-width:761px){
+ .promoBanner--editorial.promoBanner--illustrated,
+ .promoBanner--editorial.promoBanner--illustrated.promoBanner--compact{height:112px}
+ .promoBanner--illustrated .promoBannerVisual{height:90px}
+ .promoBanner--illustrated .promoBannerVisual svg{height:90px;max-height:90px}
+}
+@media(max-width:370px){
+ .promoBanner--editorial.promoBanner--illustrated,
+ .promoBanner--editorial.promoBanner--illustrated.promoBanner--compact{height:92px;padding:8px 11px}
+ .promoBanner--illustrated .promoBannerVisual{height:72px;right:4px}
+ .promoBanner--illustrated .promoBannerVisual svg{height:72px;max-height:72px}
+}
