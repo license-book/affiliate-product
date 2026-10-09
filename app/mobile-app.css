@@ -541,3 +541,37 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
  .promoBanner--editorial.promoBanner--illustrated.promoBanner--compact{height:128px;padding:12px 14px}
  .promoBanner--illustrated .promoBannerVisual{height:104px;right:6px}
 }
+
+
+/* Tighter homepage promotional cards */
+.promoBanner--editorial.promoBanner--illustrated,
+.promoBanner--editorial.promoBanner--illustrated.promoBanner--compact{
+  height:112px;min-height:0;padding:8px 15px;
+}
+.promoBanner--illustrated .promoBannerVisual{
+  top:50%;right:9px;height:94px;width:29%;transform:translateY(-50%);
+}
+.promoBanner--illustrated .promoBannerVisual svg{
+  height:94px;max-height:94px;width:100%;
+}
+.promoBanner--illustrated .promoBannerCopy small{font-size:10px}
+.promoBanner--illustrated .promoBannerCopy strong,
+.promoBanner--illustrated.promoBanner--compact .promoBannerCopy strong{
+  margin-top:4px;font-size:clamp(16px,4vw,20px);line-height:1.17;
+}
+.promoBanner--illustrated .promoBannerCopy p,
+.promoBanner--illustrated.promoBanner--compact .promoBannerCopy p{
+  margin-top:4px;font-size:clamp(10px,2.5vw,12px);line-height:1.3;
+}
+@media(min-width:761px){
+ .promoBanner--editorial.promoBanner--illustrated,
+ .promoBanner--editorial.promoBanner--illustrated.promoBanner--compact{height:125px}
+ .promoBanner--illustrated .promoBannerVisual{height:106px}
+ .promoBanner--illustrated .promoBannerVisual svg{height:106px;max-height:106px}
+}
+@media(max-width:370px){
+ .promoBanner--editorial.promoBanner--illustrated,
+ .promoBanner--editorial.promoBanner--illustrated.promoBanner--compact{height:108px;padding:7px 12px}
+ .promoBanner--illustrated .promoBannerVisual{height:90px}
+ .promoBanner--illustrated .promoBannerVisual svg{height:90px;max-height:90px}
+}
