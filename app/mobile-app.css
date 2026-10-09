@@ -477,3 +477,21 @@ html{background:#f3f3f3}body{width:100%;max-width:480px;min-height:100vh;margin:
 .homeHotDeals .hotDealInfo strong{
   margin-top:0!important;
 }
+
+
+/* Editorial homepage promotional cards: solid color, copy left, image right */
+.homePromoSlot{padding:12px 18px 10px}
+.homePromoDuo{display:flex;flex-direction:column;gap:12px;padding:0 18px 24px}
+.promoBanner--editorial,.promoBanner--editorial.promoBanner--compact{display:flex;align-items:center;min-height:146px;padding:22px 20px;border-radius:22px;isolation:isolate;overflow:hidden}
+.promoBanner--editorial.promoBanner--studio{background:#dce9f5}
+.promoBanner--editorial.promoBanner--digital{background:#ffe0c8}
+.promoBanner--editorial.promoBanner--travel{background:#5931ef;color:#fff}
+.promoBanner--editorial .promoBannerCopy,.promoBanner--editorial.promoBanner--compact .promoBannerCopy{position:relative;z-index:2;max-width:70%;width:70%;flex:0 0 70%;align-items:flex-start}
+.promoBanner--editorial .promoBannerCopy small{font-size:11px;line-height:1.3;font-weight:600;letter-spacing:0;opacity:.76}
+.promoBanner--editorial .promoBannerCopy strong,.promoBanner--editorial.promoBanner--compact .promoBannerCopy strong{max-width:none;margin:7px 0 0;font-size:clamp(18px,4.4vw,25px);font-weight:900;line-height:1.2;letter-spacing:-.055em;word-break:keep-all}
+.promoBanner--editorial .promoBannerCopy p,.promoBanner--editorial.promoBanner--compact .promoBannerCopy p{max-width:none;margin:7px 0 0;font-size:clamp(11px,2.8vw,14px);font-weight:400;line-height:1.4;opacity:.85;word-break:keep-all}
+.promoBanner--editorial .promoBannerVisual{position:absolute;inset:0 0 0 auto;width:36%;height:100%;overflow:hidden}
+.promoBanner--editorial .promoBannerVisual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.promoBanner--editorial .promoBannerVisual:after,.promoBanner--editorial.promoBanner--compact .promoBannerVisual:after{display:none}
+@media(min-width:761px){.homePromoDuo{flex-direction:row}.homePromoDuo>.promoBanner{flex:1;min-width:0}.promoBanner--editorial,.promoBanner--editorial.promoBanner--compact{min-height:175px}.promoBanner--editorial .promoBannerCopy strong,.promoBanner--editorial.promoBanner--compact .promoBannerCopy strong{font-size:23px}}
+@media(max-width:370px){.homePromoDuo{padding-left:14px;padding-right:14px}.promoBanner--editorial,.promoBanner--editorial.promoBanner--compact{padding:18px 15px}.promoBanner--editorial .promoBannerCopy strong,.promoBanner--editorial.promoBanner--compact .promoBannerCopy strong{font-size:18px}}
